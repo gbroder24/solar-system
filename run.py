@@ -12,8 +12,17 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('solar_system')
 
-daily = SHEET.worksheet('daily')
 
-daily_data = daily.get_all_values()
+def get_daily_data():
+    """
+    Get daily figures input from the user.
+    """
+    print("Please enter daily energy use data from yesterday.")
+    print("Format: Day, Month, Year, Consumed (kW), Export (kW), Import (kW)")
+    print("Example: 3,June,2024,6,-11,8\n")
 
-print(daily_data)
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
+
+
+get_daily_data()
