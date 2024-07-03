@@ -19,8 +19,8 @@ def get_daily_data():
     Get daily figures input from the user.
     """
     print("Please enter daily energy use data from yesterday.")
-    print("Format: Day, Month, Year, Consumed (kW), Export (kW), Import (kW)")
-    print("Example: 3 June 2024,6,-11,8\n")
+    print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW)")
+    print("Example: 3 Jun 2024, 5, 20, 6\n")
 
     data_str = input("Enter your data here: ")
     
@@ -39,6 +39,14 @@ def validate_daily_data(values):
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+    
+    # Validate workout date format (Day Month Year)
+    try:
+        daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
+    except ValueError:
+        print("Invalid date format. Please use Day Month Year format")
+        print("(e.g., 3 Jun 2024).")
+        return False
 
 
 get_daily_data()
