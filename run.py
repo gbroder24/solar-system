@@ -32,13 +32,9 @@ def validate_daily_data(values):
     """
     Validate daily data input.
     """
-    try:
-        if len(values) != 4:
-            raise ValueError(
-                f"Exactly 4 values required, you provided {len(values)}"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+    if len(values) != 4:
+        print(f"Exactly 4 values required, you provided {len(values)}")
+        return False
     
     # Validate workout date format (Day Month Year)
     try:
@@ -47,6 +43,14 @@ def validate_daily_data(values):
         print("Invalid date format. Please use Day Month Year format")
         print("(e.g., 3 Jun 2024).")
         return False
+    
+    # Validate daily data (Consumed (kW), Export (kW), Import (kW))
+    try:
+        new_list = values[1:]
+        [int(value) for value in new_list]
+    except ValueError as e:
+        print(f"Invalid data: {e}.\n")
+        print("Invalid energy data. Please enter a valid number")
 
 
 get_daily_data()
