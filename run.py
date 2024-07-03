@@ -64,3 +64,8 @@ def validate_daily_data(values):
     return True
 
 daily_energy_data = get_daily_data()
+str_list = daily_energy_data[1:]
+num_list = [int(value) for value in str_list]
+new_daily_list = []
+new_daily_list.append(daily_energy_data[0])
+new_daily_list.extend(num_list)
