@@ -18,14 +18,22 @@ def get_daily_data():
     """
     Get daily figures input from the user.
     """
-    print("Please enter daily energy use data from yesterday.")
-    print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW)")
-    print("Example: 3 Jun 2024, 5, 20, 6\n")
+    while True:
+        print()
+        print("Please enter daily energy use data from yesterday.\n")
+        print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
+        print("Example: 3 Jun 2024, 5, 20, 6\n")
 
-    data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: ")
+        print()
+
+        daily_data = data_str.split(",")
+        
+        if validate_daily_data(daily_data):
+            print('Data is valid.\n')
+            break
     
-    daily_data = data_str.split(",")
-    validate_daily_data(daily_data)
+    return daily_data
 
 
 def validate_daily_data(values):
@@ -33,24 +41,26 @@ def validate_daily_data(values):
     Validate daily data input.
     """
     if len(values) != 4:
-        print(f"Exactly 4 values required, you provided {len(values)}")
+        print(f"Exactly 4 values required, you provided {len(values)}.")
         return False
     
     # Validate workout date format (Day Month Year)
     try:
         daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
     except ValueError:
-        print("Invalid date format. Please use Day Month Year format")
+        print("Invalid date format. Please use Day Month Year format.")
         print("(e.g., 3 Jun 2024).")
         return False
     
-    # Validate daily data (Consumed (kW), Export (kW), Import (kW))
+    # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
     try:
         new_list = values[1:]
         [int(value) for value in new_list]
     except ValueError as e:
         print(f"Invalid data: {e}.\n")
-        print("Invalid energy data. Please enter a valid number")
+        print("Invalid energy data. Please enter a valid number.")
+        return False
 
+    return True
 
-get_daily_data()
+daily_energy_data = get_daily_data()
