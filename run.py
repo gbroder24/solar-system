@@ -83,7 +83,15 @@ def calculate_monthly_worksheet(daily_row):
     
     monthly = SHEET.worksheet("monthly").get_all_values()
     monthly_row = monthly[-1]
-    print(monthly_row)
+    monthly_row = monthly_row[1:]
+    daily_row = daily_row[1:]
+
+    monthly_data = []
+    for month, day in zip(monthly_row, daily_row):
+        month_data = int(month) + day
+        monthly_data.append(month_data)
+    
+    return monthly_data
 
 
 def main():
@@ -97,7 +105,8 @@ def main():
     new_daily_list.append(daily_energy_data[0])
     new_daily_list.extend(num_list)
     update_daily_worksheet(new_daily_list)
-    calculate_monthly_worksheet(new_daily_list)
+    new_monthly_data = calculate_monthly_worksheet(new_daily_list)
+    print(new_monthly_data)
 
 
 print("Welcome to Solar System Data Automation")
