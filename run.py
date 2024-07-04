@@ -87,7 +87,7 @@ def update_monthly_worksheet(data):
 
 def calculate_monthly_worksheet(daily_row):
     """
-    Update monthly worksheet and calculate energy use
+    Calculate monthly energy use
     """
     print("Calculating monthly data...\n")
     
@@ -102,6 +102,24 @@ def calculate_monthly_worksheet(daily_row):
         monthly_data.append(month_data)
     
     return monthly_data
+
+
+def calculate_monthly_savings(month_row):
+    """
+    Calculate monthly savings
+    """
+    print("Calculating monthly savings...\n")
+    monthly = SHEET.worksheet("monthly").get_all_values()
+    monthly_row = monthly[-1]
+    str_month = monthly_row[1:]
+    monthly_num = [int(value) for value in str_month]
+    consumed = monthly_num[0]
+    exported = monthly_num[1]
+    imported = monthly_num[2]
+    
+    grid = (consumed - imported) * 0.2287
+    saving = grid + (exported * 0.24)
+    print(f"This months's savings:  €{saving}")
 
 
 def main():
@@ -119,8 +137,8 @@ def main():
     monthly_list = []
     monthly_list.append(daily_energy_data[0])
     monthly_list.extend(new_monthly_data)
-    print(monthly_list)
     update_monthly_worksheet(monthly_list)
+    calculate_monthly_savings(monthly_list)
     
 
 
