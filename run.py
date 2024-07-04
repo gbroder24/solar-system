@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -74,10 +75,30 @@ def update_daily_worksheet(data):
     print("Daily worksheet updated successfully.\n")
 
 
-daily_energy_data = get_daily_data()
-str_list = daily_energy_data[1:]
-num_list = [int(value) for value in str_list]
-new_daily_list = []
-new_daily_list.append(daily_energy_data[0])
-new_daily_list.extend(num_list)
-update_daily_worksheet(new_daily_list)
+def calculate_monthly_worksheet(daily_row):
+    """
+    Update monthly worksheet and calculate energy use
+    """
+    print("Calculating monthly data...\n")
+    
+    monthly = SHEET.worksheet("monthly").get_all_values()
+    monthly_row = monthly[-1]
+    print(monthly_row)
+
+
+def main():
+    """
+    Run all program functions
+    """
+    daily_energy_data = get_daily_data()
+    str_list = daily_energy_data[1:]
+    num_list = [int(value) for value in str_list]
+    new_daily_list = []
+    new_daily_list.append(daily_energy_data[0])
+    new_daily_list.extend(num_list)
+    update_daily_worksheet(new_daily_list)
+    calculate_monthly_worksheet(new_daily_list)
+
+
+print("Welcome to Solar System Data Automation")
+main()
