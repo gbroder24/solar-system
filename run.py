@@ -75,6 +75,16 @@ def update_daily_worksheet(data):
     print("Daily worksheet updated successfully.\n")
 
 
+def update_monthly_worksheet(data):
+    """
+    Update monthly worksheet, add new row with the list data provided
+    """
+    print("Updating monthly worksheet...\n")
+    monthly_worksheet = SHEET.worksheet("monthly")
+    monthly_worksheet.append_row(data)
+    print("Monthly worksheet updated successfully.\n")
+
+
 def calculate_monthly_worksheet(daily_row):
     """
     Update monthly worksheet and calculate energy use
@@ -83,11 +93,11 @@ def calculate_monthly_worksheet(daily_row):
     
     monthly = SHEET.worksheet("monthly").get_all_values()
     monthly_row = monthly[-1]
-    monthly_row = monthly_row[1:]
-    daily_row = daily_row[1:]
+    new_monthly_row = monthly_row[1:]
+    new_daily_row = daily_row[1:]
 
     monthly_data = []
-    for month, day in zip(monthly_row, daily_row):
+    for month, day in zip(new_monthly_row, new_daily_row):
         month_data = int(month) + day
         monthly_data.append(month_data)
     
@@ -106,7 +116,12 @@ def main():
     new_daily_list.extend(num_list)
     update_daily_worksheet(new_daily_list)
     new_monthly_data = calculate_monthly_worksheet(new_daily_list)
-    print(new_monthly_data)
+    monthly_list = []
+    monthly_list.append(daily_energy_data[0])
+    monthly_list.extend(new_monthly_data)
+    print(monthly_list)
+    update_monthly_worksheet(monthly_list)
+    
 
 
 print("Welcome to Solar System Data Automation")
