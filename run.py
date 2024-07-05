@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from collections import defaultdict
 from pprint import pprint
 
 SCOPE = [
@@ -75,10 +76,44 @@ def update_daily_worksheet(data):
     print("Daily worksheet updated successfully.\n")
 
 
-def update_monthly_worksheet(data):
+def calculate_month():
     """
-    Update monthly worksheet, add new row with the list data provided
+    Calculate month based on the daily data.
     """
+    print("Calculating monthly data...\n")
+    daily_worksheet = SHEET.worksheet("daily")
+    daily_data = daily_worksheet.get_all_values()[1:]  # Skipping header row
+    grouped_data = defaultdict(lambda: {
+        "consumed": 0,
+        "exported": 0,
+        "imported": 0,
+        "count": 0
+    })
+
+    # Group data by month and calculate total energy use
+    for row in daily_data:
+        date_str = row[0].strip()
+        # Adjust date string to include the day if only month is provided
+        if len(date_str.split()) == 1:
+            date_str = f"1 {date_str}"  # Assuming first day of the month
+        daily_date = datetime.strptime(date_str, "%d %b %Y")
+        month_year = daily_date.strftime("%B %Y")
+        consumed = float(row[1])
+        exported = float(row[2])
+        imported = float(row[3])
+        grouped_data[month_year]["consumed"] += consumed
+        grouped_data[month_year]["exported"] += exported
+        grouped_data[month_year]["imported"] += imported
+        grouped_data[month_year]["count"] += 1
+    
+    print(grouped_data)
+    
+
+
+"""def update_monthly_worksheet(data):
+    """
+    #Update monthly worksheet, add new row with the list data provided
+"""
     print("Updating monthly worksheet...\n")
     monthly_worksheet = SHEET.worksheet("monthly")
     monthly_worksheet.append_row(data)
@@ -87,8 +122,8 @@ def update_monthly_worksheet(data):
 
 def calculate_monthly_worksheet(daily_row):
     """
-    Calculate monthly energy use
-    """
+    #Calculate monthly energy use
+"""
     print("Calculating monthly data...\n")
     
     monthly = SHEET.worksheet("monthly").get_all_values()
@@ -106,8 +141,8 @@ def calculate_monthly_worksheet(daily_row):
 
 def calculate_monthly_savings(month_row):
     """
-    Calculate monthly savings
-    """
+    #Calculate monthly savings
+"""
     print("Calculating monthly savings...\n")
     monthly = SHEET.worksheet("monthly").get_all_values()
     monthly_row = monthly[-1]
@@ -119,8 +154,7 @@ def calculate_monthly_savings(month_row):
     
     grid = (consumed - imported) * 0.2287
     saving = grid + (exported * 0.24)
-    print(f"This months's savings:  €{saving}")
-
+    print(f"This months's savings:  €{saving}")"""
 
 def main():
     """
@@ -133,12 +167,13 @@ def main():
     new_daily_list.append(daily_energy_data[0])
     new_daily_list.extend(num_list)
     update_daily_worksheet(new_daily_list)
-    new_monthly_data = calculate_monthly_worksheet(new_daily_list)
-    monthly_list = []
-    monthly_list.append(daily_energy_data[0])
-    monthly_list.extend(new_monthly_data)
-    update_monthly_worksheet(monthly_list)
-    calculate_monthly_savings(monthly_list)
+    calculate_month()
+    #new_monthly_data = update_monthly_worksheet(new_daily_list)
+    #monthly_list = []
+    #monthly_list.append(daily_energy_data[0])
+    #monthly_list.extend(new_monthly_data)
+    #update_monthly_worksheet(monthly_list)
+    #calculate_monthly_savings(monthly_list)
     
 
 
