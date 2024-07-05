@@ -116,7 +116,28 @@ def calculate_month():
     return grouped_data
         
     
+def update_monthly_worksheet():
+    """
+    Update the monthly sheet with the calculated month data.
+    """
+    print("Updating monthly sheet...")
+    monthly = SHEET.worksheet("monthly")
+
+    # Calculate progress
+    month_data = calculate_month()
     
+    # Update monthly sheet for each month
+    for month_year, info in month_data.items():
+        print(info)
+        month_cell = monthly.findall(month_year)
+        if month_cell:
+            row_index = month_cell[0].row
+            monthly.update_cell(row_index, 2, info["consumed"])
+            monthly.update_cell(row_index, 3, info["exported"])
+            monthly.update_cell(row_index, 4, info["imported"])
+            monthly.update_cell(row_index, 5, info["savings"])
+
+    print("Monthly sheet updated successfully.")
 
 
 """def update_monthly_worksheet(data):
@@ -176,7 +197,7 @@ def main():
     new_daily_list.append(daily_energy_data[0])
     new_daily_list.extend(num_list)
     update_daily_worksheet(new_daily_list)
-    calculate_month()
+    update_monthly_worksheet()
     #new_monthly_data = update_monthly_worksheet(new_daily_list)
     #monthly_list = []
     #monthly_list.append(daily_energy_data[0])
