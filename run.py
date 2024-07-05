@@ -22,7 +22,7 @@ def get_daily_data():
     """
     while True:
         print()
-        print("Please enter daily energy use data from yesterday.\n")
+        print("Please enter daily energy use data.\n")
         print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5, 20, 6\n")
 
@@ -57,7 +57,7 @@ def validate_daily_data(values):
     # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
     try:
         new_list = values[1:]
-        [int(value) for value in new_list]
+        [float(value) for value in new_list]
     except ValueError as e:
         print(f"Invalid data: {e}.\n")
         print("Invalid energy data. Please enter a valid number.")
@@ -105,8 +105,17 @@ def calculate_month():
         grouped_data[month_year]["exported"] += exported
         grouped_data[month_year]["imported"] += imported
         grouped_data[month_year]["count"] += 1
+
+    for month_year, info in grouped_data.items():
+        consumed = info["consumed"]
+        exported = info["exported"]
+        imported = info["imported"]
+        monthly_saving = ((consumed - imported) * 0.2887) + (exported * 0.24)
+        grouped_data[month_year]["savings"] = monthly_saving
+
+    return grouped_data
+        
     
-    print(grouped_data)
     
 
 
@@ -162,7 +171,7 @@ def main():
     """
     daily_energy_data = get_daily_data()
     str_list = daily_energy_data[1:]
-    num_list = [int(value) for value in str_list]
+    num_list = [float(value) for value in str_list]
     new_daily_list = []
     new_daily_list.append(daily_energy_data[0])
     new_daily_list.extend(num_list)
