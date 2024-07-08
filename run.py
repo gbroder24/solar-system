@@ -131,7 +131,7 @@ def update_monthly_worksheet():
     # Update monthly sheet for each month
     for month_year, info in month_data.items():
         month_list.append(month_year)
-        monthly.update("A2", [[a] for a in month_list])
+        monthly.update([[a] for a in month_list], "A2")
         print(month_list)
         month_cells = monthly.findall(month_year)
         if month_cells:
