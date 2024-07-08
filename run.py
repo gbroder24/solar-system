@@ -126,18 +126,25 @@ def update_monthly_worksheet():
     # Calculate progress
     month_data = calculate_month()
     
+    month_list = []
+    
     # Update monthly sheet for each month
     for month_year, info in month_data.items():
-        print(info)
-        month_cell = monthly.findall(month_year)
-        if month_cell:
-            row_index = month_cell[0].row
+        month_list.append(month_year)
+        monthly.update("A2", [[a] for a in month_list])
+        print(month_list)
+        month_cells = monthly.findall(month_year)
+        if month_cells:
+            row_index = month_cells[0].row
             monthly.update_cell(row_index, 2, info["consumed"])
             monthly.update_cell(row_index, 3, info["exported"])
             monthly.update_cell(row_index, 4, info["imported"])
             monthly.update_cell(row_index, 5, info["savings"])
+        else:
+            print(f"Error: Month {month_year} not found in progress sheet.")
+            
+    print("Progress sheet updated successfully.")
 
-    print("Monthly sheet updated successfully.")
 
 
 """def update_monthly_worksheet(data):
