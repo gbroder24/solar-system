@@ -79,6 +79,23 @@ def validate_daily_data(values):
     return True
 
 
+def validate_project_data(data):
+    """
+    Validate project data input.
+    """
+
+    # Validate project data format (€)
+    try:
+        val_list = data[0]
+        [float(value) for value in val_list]
+    except ValueError:
+        print("Invalid project data format. Please use correct format.")
+        print("(e.g., 1000.00).")
+        return False
+    
+    return True
+
+
 def update_daily_worksheet(data):
     """
     Update daily worksheet, add new row with the list data provided
@@ -171,21 +188,21 @@ def calculate_project_payback():
     month_savings = [num for num in nums_list]
     total_months = sum(month_savings)
     
-
-    print()
-    print("Please enter project cost.\n")
-    print("Format: Project Cost (€).\n")
-    print("Example: 5000.00\n")
-    project_str = input("Enter your data here: \n")
-    #validate input project str
-    project_num = int(project_str)
-    payback = total_months - project_num
-    print(payback)
-
-
-
-
+    while True:
+        print()
+        print("Please enter project cost.\n")
+        print("Format: Project Cost (€).\n")
+        print("Example: 5000.00\n")
+        project_str = input("Enter your data here: ")
+        #validate input project str
+        if validate_project_data(project_str):
+            print('\nProject data is valid.\n')
+            break
+ 
     print("Calculating project payback...\n")
+
+    payback = total_months - float(project_str)
+    return payback
 
 
 def display_daily_data(data):
@@ -277,6 +294,16 @@ def display_month_data(data):
     else:
         print("No monthly data available.")
         return 'main_menu'
+
+
+def display_project_data(data):
+    """
+    Display project data with a brief overview.
+    """
+    print("Here is your project data:")
+    print("Payback (€): The balance of your project data, in euros.")
+
+    
 
 
 """def update_monthly_worksheet(data):
@@ -407,6 +434,4 @@ def main():
     
 
 #print("Welcome to Solar System Data Automation")
-#main()
-
-calculate_project_payback()
+main()
