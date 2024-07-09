@@ -24,7 +24,7 @@ def get_daily_data():
         print()
         print("Please enter daily energy use data.\n")
         print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
-        print("Example: 3 Jun 2024, 5, 20, 6\n")
+        print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
 
         data_str = input("Enter your data here: ")
         print()
@@ -120,12 +120,13 @@ def update_monthly_worksheet():
     """
     Update the monthly sheet with the calculated month data.
     """
-    print("Updating monthly sheet...")
     monthly = SHEET.worksheet("monthly")
 
     # Calculate progress
     month_data = calculate_month()
     
+    print("Updating monthly worksheet...\n")
+
     month_list = []
     
     # Update monthly sheet for each month
@@ -143,7 +144,7 @@ def update_monthly_worksheet():
         else:
             print(f"Error: Month {month_year} not found in progress sheet.")
             
-    print("Progress sheet updated successfully.")
+    print("Monthly worksheet updated successfully.\n")
 
 
 
@@ -221,7 +222,22 @@ def main():
         choice = input("\nEnter your choice (1, 2, 3, 4 or 5): ")
         print()
 
+
+        if choice == '1':
+            daily_energy_data = get_daily_data()
+            str_list = daily_energy_data[1:]
+            num_list = [float(value) for value in str_list]
+            new_daily_list = []
+            new_daily_list.append(daily_energy_data[0])
+            new_daily_list.extend(num_list)
+            update_daily_worksheet(new_daily_list)
+            update_monthly_worksheet()
+
+
+        
+
     
+    """
     daily_energy_data = get_daily_data()
     str_list = daily_energy_data[1:]
     num_list = [float(value) for value in str_list]
@@ -236,6 +252,7 @@ def main():
     #monthly_list.extend(new_monthly_data)
     #update_monthly_worksheet(monthly_list)
     #calculate_monthly_savings(monthly_list)
+    """
     
 
 #print("Welcome to Solar System Data Automation")
