@@ -187,7 +187,6 @@ def calculate_project_payback():
     total_months = sum(month_savings)
     
     while True:
-        print()
         print("Please enter project cost.\n")
         print("Format: Project Cost (€).\n")
         print("Example: 5000.00\n")
