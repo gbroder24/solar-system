@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
-#import prettytable
+import prettytable
 from pprint import pprint
 
 SCOPE = [
@@ -159,6 +159,49 @@ def update_monthly_worksheet():
     print("Monthly worksheet updated successfully.\n")
 
 
+def display_daily_data(data):
+    """
+    Display daily data with a brief overview.
+    """
+    print("\nHere is your daily data:")
+    print("Date: The date of your entered daily data.")
+    print("Consumed (kW): The energy consumed during "
+          "the day, in kilowatts.")
+    print("Exported (kW): The energy exported to the grid "
+          "during the day, in kilowatts.")
+    print("Imported (kW): The energy imported from the grid "
+          "during the day, in kilowatts.")
+
+    if len(data) > 1:
+        print("\n")  # Add a newline above the table
+        table = prettytable.PrettyTable([
+            "Date",
+            "Consumed (kW)",
+            "Exported (kW)",
+            "Imported (kW)"
+            ])
+        for row in data[1:]:
+            table.add_row(row)
+        print(table)
+        print()  # Add a single newline below the table
+
+        while True:
+            print("\nWhat would you like to do next?")
+            print("1. Back to main menu")
+            print("2. Exit")
+            choice = input("Enter your choice (1 or 2): ")
+            print()
+
+            if choice == '1':
+                return 'main_menu'
+            elif choice == '2':
+                return 'exit'
+            else:
+                print("Invalid choice. Please enter either 1 or 2.")
+    else:
+        print("No workout logs available.")
+        return 'main_menu'
+
 
 """def update_monthly_worksheet(data):
     """
@@ -273,6 +316,6 @@ def main():
     
 
 #print("Welcome to Solar System Data Automation")
-#main()
+main()
 
-view_daily_data()
+#view_daily_data()
