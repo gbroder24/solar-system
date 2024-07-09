@@ -193,10 +193,35 @@ def calculate_monthly_savings(month_row):
     saving = grid + (exported * 0.24)
     print(f"This months's savings:  €{saving}")"""
 
+
+def print_menu():
+    """
+    Print the main menu options.
+    """
+    print("Main Menu:")
+    print("1. Enter daily data")
+    print("2. View monthly data")
+    print("3. View monthly savings")
+    print("4. View project payback")
+    print("5. Exit")
+
+
 def main():
     """
     Run all program functions
     """
+    print("Welcome to Solar System Data Automation app!\n")
+    print("The Solar System Data Automation app serves as my dedicated tool for\n"
+          "logging and tracking my households daily and monthly energy use,\n"
+          "savings and payback on the installed system.\n")
+
+
+    while True:
+        print_menu()
+        choice = input("\nEnter your choice (1, 2, 3, 4 or 5): ")
+        print()
+
+    
     daily_energy_data = get_daily_data()
     str_list = daily_energy_data[1:]
     num_list = [float(value) for value in str_list]
@@ -213,6 +238,5 @@ def main():
     #calculate_monthly_savings(monthly_list)
     
 
-
-print("Welcome to Solar System Data Automation")
+#print("Welcome to Solar System Data Automation")
 main()
