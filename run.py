@@ -28,6 +28,7 @@ def view_daily_data():
         print(", ".join(row))  # Print each row of daily data
     print("\n")
 
+
 def get_daily_data():
     """
     Get daily figures input from the user.
@@ -157,6 +158,34 @@ def update_monthly_worksheet():
             print(f"Error: Month {month_year} not found in progress sheet.")
             
     print("Monthly worksheet updated successfully.\n")
+
+
+def calculate_project_payback():
+    """
+    Calculate project payback based on available data.
+    """
+    monthly = SHEET.worksheet("monthly")
+    values = monthly.col_values(5)
+    new_values = values[1:]
+    nums_list = [float(value) for value in new_values]
+    month_savings = [num for num in nums_list]
+    total_months = sum(month_savings)
+    
+
+    print()
+    print("Please enter project cost.\n")
+    print("Format: Project Cost (€).\n")
+    print("Example: 5000.00\n")
+    project_str = input("Enter your data here: \n")
+    #validate input project str
+    project_num = int(project_str)
+    payback = total_months - project_num
+    print(payback)
+
+
+
+
+    print("Calculating project payback...\n")
 
 
 def display_daily_data(data):
@@ -351,6 +380,13 @@ def main():
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
 
+        elif choice == '4':
+            project_data = calculate_project_payback()
+            action = display_project_data(project_data)
+            if action == 'exit':
+                print("Exiting the Solar System Data Automation App. Goodbye!")
+                break
+
     
     """
     daily_energy_data = get_daily_data()
@@ -371,6 +407,6 @@ def main():
     
 
 #print("Welcome to Solar System Data Automation")
-main()
+#main()
 
-#view_daily_data()
+calculate_project_payback()
