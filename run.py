@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
+#import prettytable
 from pprint import pprint
 
 SCOPE = [
@@ -15,6 +16,17 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('solar_system')
 
+
+def view_daily_data():
+    """
+    View daily data from the terminal.
+    """
+    print("Viewing daily data...\n")
+    daily_worksheet = SHEET.worksheet("daily")
+    data = daily_worksheet.get_all_values()
+    for row in data:
+        print(", ".join(row))  # Print each row of daily data
+    print("\n")
 
 def get_daily_data():
     """
@@ -234,7 +246,12 @@ def main():
             update_monthly_worksheet()
 
 
-        
+        elif choice == '2':
+            daily_data = SHEET.worksheet("daily").get_all_values()
+            action = display_daily_data(daily_data)
+            if action == 'exit':
+                print("Exiting the Solar System Data Automation App. Goodbye!")
+                break
 
     
     """
@@ -256,4 +273,6 @@ def main():
     
 
 #print("Welcome to Solar System Data Automation")
-main()
+#main()
+
+view_daily_data()
