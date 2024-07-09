@@ -34,7 +34,6 @@ def get_daily_data():
     Get daily figures input from the user.
     """
     while True:
-        print()
         print("Please enter daily energy use data.\n")
         print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
@@ -163,7 +162,6 @@ def update_monthly_worksheet():
     for month_year, info in month_data.items():
         month_list.append(month_year)
         monthly.update([[a] for a in month_list], "A2")
-        print(month_list)
         month_cells = monthly.findall(month_year)
         if month_cells:
             row_index = month_cells[0].row
@@ -202,14 +200,32 @@ def calculate_project_payback():
     print("Calculating project payback...\n")
 
     payback = total_months - float(project_str)
+
     return payback
+
+
+def update_payback_worksheet(data):
+    """
+    Update payback worksheet.
+    """
+    payback_worksheet = SHEET.worksheet("payback")
+
+    payback_list = []
+    
+    print("Updating payback worksheet...\n")
+
+    # Update payback sheet
+    payback_list.append(data)
+    payback_worksheet.update([[val] for val in payback_list], "A2")
+    
+    print("Payback worksheet updated successfully.\n")
 
 
 def display_daily_data(data):
     """
     Display daily data with a brief overview.
     """
-    print("\nHere is your daily data:")
+    print("Here is your daily data:")
     print("Date: The date of your entered daily data.")
     print("Consumed (kW): The energy consumed during "
           "the day, in kilowatts.")
@@ -253,8 +269,8 @@ def display_month_data(data):
     """
     Display monthly data with a brief overview.
     """
-    print("\nHere is your monthly data:")
-    print("Month Year: The month and year of your entered monthly data.")
+    print("Here is your monthly data:")
+    print("Month Year: The month and year of energy data.")
     print("Consumed (kW): The energy consumed during "
           "the month, in kilowatts.")
     print("Exported (kW): The energy exported to the grid "
@@ -264,7 +280,7 @@ def display_month_data(data):
     print("Savings (€): The savings calculated during the month, in euros.")
           
 
-    if data:
+    if len(data) > 1:
         print("\n")  # Add a newline above the table
         table = prettytable.PrettyTable([
             "Month Year",
@@ -273,8 +289,8 @@ def display_month_data(data):
             "Imported (kW)",
             "Savings (€)"
             ])
-        for month, info in data.items():
-            table.add_row([month, info["consumed"], info["exported"], info["imported"], info["savings"]])
+        for row in data[1:]:
+            table.add_row(row)
         print(table)
         print()  # Add a single newline below the table
 
@@ -303,7 +319,32 @@ def display_project_data(data):
     print("Here is your project data:")
     print("Payback (€): The balance of your project data, in euros.")
 
-    
+    if data:
+        print("\n")  # Add a newline above the table
+        table = prettytable.PrettyTable([
+            "Payback (€)"
+            ])
+        
+        table.add_row([data])
+        print(table)
+        print()  # Add a single newline below the table
+
+        while True:
+            print("\nWhat would you like to do next?")
+            print("1. Back to main menu")
+            print("2. Exit")
+            choice = input("Enter your choice (1 or 2): ")
+            print()
+
+            if choice == '1':
+                return 'main_menu'
+            elif choice == '2':
+                return 'exit'
+            else:
+                print("Invalid choice. Please enter either 1 or 2.")
+    else:
+        print("No project data available.")
+        return 'main_menu'
 
 
 """def update_monthly_worksheet(data):
@@ -361,7 +402,7 @@ def print_menu():
     print("1. Enter daily data")
     print("2. View daily data")
     print("3. View monthly data")
-    print("4. View project payback")
+    print("4. Enter and View project payback")
     print("5. Exit")
 
 
@@ -401,14 +442,16 @@ def main():
 
 
         elif choice == '3':
-            month_data = calculate_month()
+            month_data = SHEET.worksheet("monthly").get_all_values()
             action = display_month_data(month_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
 
+
         elif choice == '4':
             project_data = calculate_project_payback()
+            update_payback_worksheet(project_data)
             action = display_project_data(project_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
