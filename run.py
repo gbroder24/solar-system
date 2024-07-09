@@ -199,7 +199,54 @@ def display_daily_data(data):
             else:
                 print("Invalid choice. Please enter either 1 or 2.")
     else:
-        print("No workout logs available.")
+        print("No daily data available.")
+        return 'main_menu'
+
+
+def display_month_data(data):
+    """
+    Display monthly data with a brief overview.
+    """
+    print("\nHere is your monthly data:")
+    print("Month Year: The month and year of your entered monthly data.")
+    print("Consumed (kW): The energy consumed during "
+          "the month, in kilowatts.")
+    print("Exported (kW): The energy exported to the grid "
+          "during the month, in kilowatts.")
+    print("Imported (kW): The energy imported from the grid "
+          "during the month, in kilowatts.")
+    print("Savings (€): The savings calculated during the month, in euros.")
+          
+
+    if data:
+        print("\n")  # Add a newline above the table
+        table = prettytable.PrettyTable([
+            "Month Year",
+            "Consumed (kW)",
+            "Exported (kW)",
+            "Imported (kW)",
+            "Savings (€)"
+            ])
+        for month, info in data.items():
+            table.add_row([month, info["consumed"], info["exported"], info["imported"], info["savings"]])
+        print(table)
+        print()  # Add a single newline below the table
+
+        while True:
+            print("\nWhat would you like to do next?")
+            print("1. Back to main menu")
+            print("2. Exit")
+            choice = input("Enter your choice (1 or 2): ")
+            print()
+
+            if choice == '1':
+                return 'main_menu'
+            elif choice == '2':
+                return 'exit'
+            else:
+                print("Invalid choice. Please enter either 1 or 2.")
+    else:
+        print("No monthly data available.")
         return 'main_menu'
 
 
