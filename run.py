@@ -256,8 +256,8 @@ def print_menu():
     """
     print("Main Menu:")
     print("1. Enter daily data")
-    print("2. View monthly data")
-    print("3. View monthly savings")
+    print("2. View daily data")
+    print("3. View monthly data")
     print("4. View project payback")
     print("5. Exit")
 
@@ -292,6 +292,14 @@ def main():
         elif choice == '2':
             daily_data = SHEET.worksheet("daily").get_all_values()
             action = display_daily_data(daily_data)
+            if action == 'exit':
+                print("Exiting the Solar System Data Automation App. Goodbye!")
+                break
+
+
+        elif choice == '3':
+            month_data = calculate_month()
+            action = display_month_data(month_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
