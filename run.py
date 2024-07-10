@@ -62,7 +62,7 @@ def validate_daily_data(values):
         daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
     except ValueError:
         print("Invalid date format. Please use Day Month Year format.")
-        print("(e.g., 3 Jun 2024).")
+        print("(e.g., 3 Jun 2024).\n")
         return False
     
     # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
@@ -71,7 +71,7 @@ def validate_daily_data(values):
         [float(value) for value in new_list]
     except ValueError as e:
         print(f"Invalid data: {e}.\n")
-        print("Invalid energy data. Please enter a valid number.")
+        print("Invalid energy data. Please enter a valid number.\n")
         return False
 
     return True
@@ -171,7 +171,7 @@ def update_monthly_worksheet():
         else:
             print(f"Error: Month {month_year} not found in progress sheet.")
             
-    print("Monthly worksheet updated successfully.")
+    print("Monthly worksheet updated successfully.\n")
 
 
 def calculate_project_payback():
