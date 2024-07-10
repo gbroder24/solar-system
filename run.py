@@ -56,8 +56,19 @@ def validate_daily_data(values):
     if len(values) != 4:
         print(f"Exactly 4 values required, you provided {len(values)}.")
         return False
-    
-    # Validate workout date format (Day Month Year)
+
+    # Validate duplicate date format (Day Month Year)
+    daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
+    daily = SHEET.worksheet("daily")
+    dates = daily.col_values(1)
+    new_dates_list = dates[1:]
+    count = new_dates_list.count(values[0])
+
+    if count == 1:
+        print(f"Duplicate date entered, you provided {values[0]}.\n")
+        return False
+
+    # Validate date format (Day Month Year)
     try:
         daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
     except ValueError:
@@ -75,7 +86,7 @@ def validate_daily_data(values):
         return False
 
     return True
-
+    
 
 def validate_project_data(data):
     """
