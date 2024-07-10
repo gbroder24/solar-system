@@ -88,8 +88,8 @@ def validate_project_data(data):
         val_list = data[0]
         [float(value) for value in val_list]
     except ValueError:
-        print("Invalid project data format. Please use correct format.")
-        print("(e.g., 1000.00).")
+        print("\nInvalid project data format. Please use correct format.")
+        print("(e.g., 1000.00).\n")
         return False
     
     return True
@@ -415,7 +415,7 @@ def main():
             break
 
         else:
-            print("Invalid choice. Please choose 1, 2, 3, or 4.")
+            print("Invalid choice. Please choose 1, 2, 3, 4 or 5.")
 
     
 main()
