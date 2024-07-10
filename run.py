@@ -456,6 +456,16 @@ def main():
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
 
+
+        elif choice == '5':
+            print("Exiting the Solar System Data Automation App. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please choose 1, 2, 3, or 4.")
+
+        print()  # Add a newline before the main menu
+
     
     """
     daily_energy_data = get_daily_data()
