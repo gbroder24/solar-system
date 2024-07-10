@@ -3,7 +3,6 @@ from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
-from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -38,7 +37,7 @@ def get_daily_data():
         print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
 
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: \n")
         print()
 
         daily_data = data_str.split(",")
@@ -190,7 +189,7 @@ def calculate_project_payback():
         print("Please enter project cost.\n")
         print("Format: Project Cost (€).\n")
         print("Example: 5000.00\n")
-        project_str = input("Enter your data here: ")
+        project_str = input("Enter your data here: \n")
         #validate input project str
         if validate_project_data(project_str):
             print('\nProject data is valid.\n')
@@ -250,7 +249,7 @@ def display_daily_data(data):
             print("\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
-            choice = input("Enter your choice (1 or 2): ")
+            choice = input("Enter your choice (1 or 2): \n")
             print()
 
             if choice == '1':
@@ -297,7 +296,7 @@ def display_month_data(data):
             print("\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
-            choice = input("Enter your choice (1 or 2): ")
+            choice = input("Enter your choice (1 or 2): \n")
             print()
 
             if choice == '1':
@@ -332,7 +331,7 @@ def display_project_data(data):
             print("\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
-            choice = input("Enter your choice (1 or 2): ")
+            choice = input("Enter your choice (1 or 2): \n")
             print()
 
             if choice == '1':
@@ -370,7 +369,7 @@ def main():
 
     while True:
         print_menu()
-        choice = input("\nEnter your choice (1, 2, 3, 4 or 5): ")
+        choice = input("\nEnter your choice (1, 2, 3, 4 or 5): \n")
         print()
 
 
