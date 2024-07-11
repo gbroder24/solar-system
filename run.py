@@ -6,6 +6,8 @@ import prettytable
 from colorama import init, Fore, Style
 init(autoreset=True)
 import time
+# os library to clear screen
+import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,6 +19,15 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('solar_system')
+
+
+# clear screen function
+# Credit: https://www.101computing.net/python-typing-text-effect/
+def clear_screen():
+    """
+    Function for clearing CLI for new code
+    """
+    os.system("clear")
 
 
 def prog_start():
@@ -57,8 +68,8 @@ def prog_start():
     time.sleep(1)
     print(Fore.CYAN + Style.BRIGHT + "     (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
-    time.sleep(5)
-    #clearScreen()
+    time.sleep(10)
+    clear_screen()
 
 
 def view_daily_data():
