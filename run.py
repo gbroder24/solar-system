@@ -6,7 +6,7 @@ from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
-
+import colorama as ca
 from colorama import init, Fore, Style
 init(autoreset=True)
 
