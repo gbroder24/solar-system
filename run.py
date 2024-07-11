@@ -5,6 +5,7 @@ from collections import defaultdict
 import prettytable
 from colorama import init, Fore, Style
 init(autoreset=True)
+import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,6 +17,48 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('solar_system')
+
+
+def prog_start():
+    """
+    Run opening screen for user and gives brief explanation of its use.
+    """
+    print("\n")
+    # Fore and Style options are colorama properties to give the text colours
+    print(Fore.YELLOW + Style.BRIGHT + '''
+    **********************************************************************
+    *                                                                    *
+                €€€€€€\            €€\                             
+                €€  __€€\           €€ |                            
+                €€ /  \__| €€€€€€\  €€ | €€€€€€\   €€€€€€\          
+                \€€€€€€\  €€  __€€\ €€ | \____€€\ €€  __€€\         
+                \____€€\ €€ /  €€ |€€ | €€€€€€€ |€€ |  \__|        
+                €€\   €€ |€€ |  €€ |€€ |€€  __€€ |€€ |              
+                \€€€€€€  |\€€€€€€  |€€ |\€€€€€€€ |€€ |              
+                \______/  \______/ \__| \_______|\__|              
+                                                                                                    
+        €€€€€€\                        €€\                             
+        €€  __€€\                       €€ |                            
+        €€ /  \__|€€\   €€\  €€€€€€€\ €€€€€€\    €€€€€€\  €€€€€€\€€€€\  
+        \€€€€€€\  €€ |  €€ |€€  _____|\_€€  _|  €€  __€€\ €€  _€€  _€€\ 
+        \____€€\ €€ |  €€ |\€€€€€€\    €€ |    €€€€€€€€ |€€ / €€ / €€ |
+        €€\   €€ |€€ |  €€ | \____€€\   €€ |€€\ €€   ____|€€ | €€ | €€ |
+        \€€€€€€  |\€€€€€€€ |€€€€€€€  |  \€€€€  |\€€€€€€€\ €€ | €€ | €€ |
+        \______/  \____€€ |\_______/    \____/  \_______|\__| \__| \__|
+                €€\   €€ |                                            
+                \€€€€€€  |                                            
+                \______/                                                                              
+    *                                                                    *
+    **********************************************************************
+    ''')
+    print("\n")
+    print(Fore.CYAN + Style.BRIGHT + "Solar Generation and Energy Use Data Logging System "
+          "for Solar Panel Installations.\n")
+    time.sleep(1)
+    print(Fore.CYAN + Style.BRIGHT + "     (Created for Educational Purposes -"
+          " Copyright: Gary Broderick '24)")
+    time.sleep(5)
+    #clearScreen()
 
 
 def view_daily_data():
@@ -394,12 +437,10 @@ def main():
           "logging and tracking my households daily and monthly energy use,\n"
           "savings and payback on the installed system.\n")
 
-
     while True:
         print_menu()
         choice = input("\nEnter your choice (1, 2, 3, 4 or 5): \n")
         print()
-
 
         if choice == '1':
             daily_energy_data = get_daily_data()
@@ -411,7 +452,6 @@ def main():
             update_daily_worksheet(new_daily_list)
             update_monthly_worksheet()
 
-
         elif choice == '2':
             daily_data = SHEET.worksheet("daily").get_all_values()
             action = display_daily_data(daily_data)
@@ -419,14 +459,12 @@ def main():
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
 
-
         elif choice == '3':
             month_data = SHEET.worksheet("monthly").get_all_values()
             action = display_month_data(month_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
-
 
         elif choice == '4':
             project_data = calculate_project_payback()
@@ -436,7 +474,6 @@ def main():
                 print("Exiting the Solar System Data Automation App. Goodbye!")
                 break
 
-
         elif choice == '5':
             print("Exiting the Solar System Data Automation App. Goodbye!")
             break
@@ -444,5 +481,6 @@ def main():
         else:
             print(Fore.RED + "Invalid choice. Please choose 1, 2, 3, 4 or 5.")
 
-    
+
+prog_start()    
 main()
