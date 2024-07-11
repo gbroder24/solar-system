@@ -258,6 +258,9 @@ def update_monthly_worksheet():
             
     print(Fore.GREEN + "Monthly worksheet updated successfully.\n")
 
+    time.sleep(3)
+    clear_screen()
+
 
 def calculate_project_payback():
     """
@@ -338,8 +341,12 @@ def display_daily_data(data):
             print()
 
             if choice == '1':
+                time.sleep(2)
+                clear_screen()
                 return 'main_menu'
             elif choice == '2':
+                time.sleep(2)
+                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
@@ -382,8 +389,12 @@ def display_month_data(data):
             print()
 
             if choice == '1':
+                time.sleep(2)
+                clear_screen()
                 return 'main_menu'
             elif choice == '2':
+                time.sleep(2)
+                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
@@ -396,6 +407,7 @@ def display_project_data(data):
     """
     Display project data with a brief overview.
     """
+    time.sleep(5)
     print(Fore.BLUE + "Here is your project data:")
     print("Payback (€): The balance of your project data, in euros.")
 
@@ -417,8 +429,12 @@ def display_project_data(data):
             print()
 
             if choice == '1':
+                time.sleep(2)
+                clear_screen()
                 return 'main_menu'
             elif choice == '2':
+                time.sleep(2)
+                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
@@ -468,6 +484,7 @@ def main():
             action = display_daily_data(daily_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
+                time.sleep(2)
                 break
 
         elif choice == '3':
@@ -475,6 +492,7 @@ def main():
             action = display_month_data(month_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
+                time.sleep(2)
                 break
 
         elif choice == '4':
@@ -483,10 +501,12 @@ def main():
             action = display_project_data(project_data)
             if action == 'exit':
                 print("Exiting the Solar System Data Automation App. Goodbye!")
+                time.sleep(2)
                 break
 
         elif choice == '5':
             print("Exiting the Solar System Data Automation App. Goodbye!")
+            time.sleep(2)
             break
 
         else:
