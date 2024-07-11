@@ -36,7 +36,7 @@ def prog_start():
     """
     print("\n")
     # Fore and Style options are colorama properties to give the text colours
-    print(Fore.YELLOW + Style.BRIGHT + '''
+    print(Fore.YELLOW + Style.BRIGHT + r''''
                 €€€€€€\            €€\                             
                 €€  __€€\           €€ |                            
                 €€ /  \__| €€€€€€\  €€ | €€€€€€\   €€€€€€\          
