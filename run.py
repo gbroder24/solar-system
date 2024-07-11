@@ -57,6 +57,24 @@ def validate_daily_data(values):
         print(f"Exactly 4 values required, you provided {len(values)}.")
         return False
 
+    # Create two datetime objects with time
+    datetime1 = datetime.strptime(values[0].strip(), "%d %b %Y")
+    datetime2 = datetime.today()
+    
+    # Extract dates from datetime objects
+    input_date = datetime1.date()
+    todays_date = datetime2.date()
+    
+    # Compare dates
+    if input_date > todays_date:
+        print(f"Invalid date, you provided {values[0]}.\n")
+        print("Date provided is later than todays date.\n")
+        return False
+    elif input_date == todays_date:
+        print(f"Invalid date, you provided {values[0]}.\n")
+        print("Date provided is todays date, no data generated.\n")
+        return False
+
     # Validate duplicate date format (Day Month Year)
     daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
     daily = SHEET.worksheet("daily")
