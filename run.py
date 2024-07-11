@@ -6,10 +6,9 @@ from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
-import colorama
-print(colorama)
+
 from colorama import init, Fore, Style
-colorama.init(autoreset=True)
+init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
