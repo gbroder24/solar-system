@@ -8,7 +8,7 @@ from collections import defaultdict
 import prettytable
 import colorama
 from colorama import init, Fore, Style
-init(autoreset=True)
+colorama.init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
