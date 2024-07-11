@@ -250,7 +250,6 @@ def update_monthly_worksheet():
     print(Fore.GREEN + "Monthly worksheet updated successfully.\n")
 
     time.sleep(3)
-    clear_screen()
 
 
 def calculate_project_payback():
@@ -333,11 +332,9 @@ def display_daily_data(data):
 
             if choice == '1':
                 time.sleep(2)
-                clear_screen()
                 return 'main_menu'
             elif choice == '2':
                 time.sleep(2)
-                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
@@ -380,11 +377,9 @@ def display_month_data(data):
 
             if choice == '1':
                 time.sleep(2)
-                clear_screen()
                 return 'main_menu'
             elif choice == '2':
                 time.sleep(2)
-                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
@@ -420,11 +415,9 @@ def display_project_data(data):
 
             if choice == '1':
                 time.sleep(2)
-                clear_screen()
                 return 'main_menu'
             elif choice == '2':
                 time.sleep(2)
-                clear_screen()
                 return 'exit'
             else:
                 print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
