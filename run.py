@@ -34,10 +34,8 @@ def prog_start():
     """
     Run opening screen for user and gives brief explanation of its use.
     """
-    print("\n")
     # Fore and Style options are colorama properties to give the text colours
     print(Fore.YELLOW + Style.BRIGHT + r''''
-    
                         ____  ____  _     ____  ____     
                         / ___\/  _ \/ \   /  _ \/  __\    
                         |    \| / \|| |   | / \||  \/|    
@@ -50,13 +48,11 @@ def prog_start():
                     \___ | / /  \___ |  | |  |  /_ | |  ||
                     \____//_/   \____/  \_/  \____\\_/  \|
                                       
-                  
     ''')
-    print("\n")
-    print(Fore.YELLOW + Style.BRIGHT + "Solar Generation and Energy Use "
-          "Data Logging System for Solar Panel Installations.\n")
+    print(Fore.YELLOW + Style.BRIGHT + "            Solar Generation and Energy Use "
+          "Data Logging System.\n")
     time.sleep(1)
-    print(Fore.YELLOW + Style.BRIGHT + " (Created for Educational Purposes -"
+    print(Fore.YELLOW + Style.BRIGHT + "      (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
     time.sleep(5)
     clear_screen()
