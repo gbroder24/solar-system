@@ -7,6 +7,7 @@ from datetime import datetime
 from collections import defaultdict
 import prettytable
 import colorama
+print(colorama)
 from colorama import init, Fore, Style
 colorama.init(autoreset=True)
 
@@ -517,4 +518,5 @@ def main():
 
 
 prog_start()
-main()
+if __name__ == '__main__':
+    main()
