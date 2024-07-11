@@ -37,8 +37,6 @@ def prog_start():
     print("\n")
     # Fore and Style options are colorama properties to give the text colours
     print(Fore.YELLOW + Style.BRIGHT + '''
-    **********************************************************************
-    *                                                                    *
                 €€€€€€\            €€\                             
                 €€  __€€\           €€ |                            
                 €€ /  \__| €€€€€€\  €€ | €€€€€€\   €€€€€€\          
@@ -59,14 +57,12 @@ def prog_start():
                 €€\   €€ |                                            
                 \€€€€€€  |                                            
                 \______/                                                                              
-    *                                                                    *
-    **********************************************************************
     ''')
     print("\n")
-    print(Fore.CYAN + Style.BRIGHT + "Solar Generation and Energy Use Data Logging System "
+    print(Fore.YELLOW + Style.BRIGHT + "Solar Generation and Energy Use Data Logging System "
           "for Solar Panel Installations.\n")
     time.sleep(1)
-    print(Fore.CYAN + Style.BRIGHT + "     (Created for Educational Purposes -"
+    print(Fore.YELLOW + Style.BRIGHT + "     (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
     time.sleep(10)
     clear_screen()
