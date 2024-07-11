@@ -3,6 +3,8 @@ from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
+from colorama import init, Fore, Style
+init(autoreset=True)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -33,7 +35,7 @@ def get_daily_data():
     Get daily figures input from the user.
     """
     while True:
-        print("Please enter daily energy use data.\n")
+        print(Fore.LIGHTBLUE_EX + "Please enter daily energy use data.\n")
         print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
 
@@ -43,7 +45,7 @@ def get_daily_data():
         daily_data = data_str.split(",")
         
         if validate_daily_data(daily_data):
-            print('Data is valid.\n')
+            print(Fore.GREEN + 'Data is valid.\n')
             break
     
     return daily_data
@@ -54,7 +56,24 @@ def validate_daily_data(values):
     Validate daily data input.
     """
     if len(values) != 4:
-        print(f"Exactly 4 values required, you provided {len(values)}.")
+        print(Fore.RED + f"Exactly 4 values required, you provided {len(values)}.\n")
+        return False
+
+    # Validate date format (Day Month Year)
+    try:
+        daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
+    except ValueError:
+        print(Fore.RED + "Invalid date format. Please use Day Month Year format.")
+        print("(e.g., 3 Jun 2024).\n")
+        return False
+    
+    # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
+    try:
+        new_list = values[1:]
+        [float(value) for value in new_list]
+    except ValueError as e:
+        print(Fore.RED + f"Invalid data: {e}.\n")
+        print(Fore.RED + "Invalid energy data. Please enter a valid number.\n")
         return False
 
     # Create two datetime objects with time
@@ -67,12 +86,12 @@ def validate_daily_data(values):
     
     # Compare dates
     if input_date > todays_date:
-        print(f"Invalid date, you provided {values[0]}.\n")
-        print("Date provided is later than todays date.\n")
+        print(Fore.RED + f"Invalid date, you provided {values[0]}.\n")
+        print(Fore.RED + "Date provided is too late, no data generated.\n")
         return False
     elif input_date == todays_date:
-        print(f"Invalid date, you provided {values[0]}.\n")
-        print("Date provided is todays date, no data generated.\n")
+        print(Fore.RED + f"Invalid date, you provided {values[0]}.\n")
+        print(Fore.RED + "Date provided is todays date, no data generated.\n")
         return False
 
     # Validate duplicate date format (Day Month Year)
@@ -83,24 +102,7 @@ def validate_daily_data(values):
     count = new_dates_list.count(values[0])
 
     if count == 1:
-        print(f"Duplicate date entered, you provided {values[0]}.\n")
-        return False
-
-    # Validate date format (Day Month Year)
-    try:
-        daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
-    except ValueError:
-        print("Invalid date format. Please use Day Month Year format.")
-        print("(e.g., 3 Jun 2024).\n")
-        return False
-    
-    # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
-    try:
-        new_list = values[1:]
-        [float(value) for value in new_list]
-    except ValueError as e:
-        print(f"Invalid data: {e}.\n")
-        print("Invalid energy data. Please enter a valid number.\n")
+        print(Fore.RED + f"Duplicate date entered, you provided {values[0]}.\n")
         return False
 
     return True
@@ -116,7 +118,7 @@ def validate_project_data(data):
         val_list = data[0]
         [float(value) for value in val_list]
     except ValueError:
-        print("\nInvalid project data format. Please use correct format.")
+        print(Fore.RED + "\nInvalid project data format. Please use correct format.")
         print("(e.g., 1000.00).\n")
         return False
     
@@ -130,7 +132,7 @@ def update_daily_worksheet(data):
     print("Updating daily worksheet...\n")
     daily_worksheet = SHEET.worksheet("daily")
     daily_worksheet.append_row(data)
-    print("Daily worksheet updated successfully.\n")
+    print(Fore.GREEN + "Daily worksheet updated successfully.\n")
 
 
 def calculate_month():
@@ -200,7 +202,7 @@ def update_monthly_worksheet():
         else:
             print(f"Error: Month {month_year} not found in progress sheet.")
             
-    print("Monthly worksheet updated successfully.\n")
+    print(Fore.GREEN + "Monthly worksheet updated successfully.\n")
 
 
 def calculate_project_payback():
@@ -215,13 +217,13 @@ def calculate_project_payback():
     total_months = sum(month_savings)
     
     while True:
-        print("Please enter project cost.\n")
+        print(Fore.BLUE + "Please enter project cost.\n")
         print("Format: Project Cost (€).\n")
         print("Example: 5000.00\n")
         project_str = input("Enter your data here: \n")
         #validate input project str
         if validate_project_data(project_str):
-            print('\nProject data is valid.\n')
+            print(Fore.GREEN + '\nProject data is valid.\n')
             break
  
     print("Calculating project payback...\n")
@@ -245,14 +247,14 @@ def update_payback_worksheet(data):
     payback_list.append(data)
     payback_worksheet.update([[val] for val in payback_list], "A2")
     
-    print("Payback worksheet updated successfully.\n")
+    print(Fore.GREEN + "Payback worksheet updated successfully.\n")
 
 
 def display_daily_data(data):
     """
     Display daily data with a brief overview.
     """
-    print("Here is your daily data:")
+    print(Fore.BLUE + "Here is your daily data:")
     print("Date: The date of your entered daily data.")
     print("Consumed (kW): The energy consumed during "
           "the day, in kilowatts.")
@@ -275,7 +277,7 @@ def display_daily_data(data):
         print()  # Add a single newline below the table
 
         while True:
-            print("\nWhat would you like to do next?")
+            print(Fore.BLUE + "\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
             choice = input("Enter your choice (1 or 2): \n")
@@ -286,17 +288,14 @@ def display_daily_data(data):
             elif choice == '2':
                 return 'exit'
             else:
-                print("Invalid choice. Please enter either 1 or 2.")
-    else:
-        print("No daily data available.")
-        return 'main_menu'
+                print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
 
 
 def display_month_data(data):
     """
     Display monthly data with a brief overview.
     """
-    print("Here is your monthly data:")
+    print(Fore.BLUE + "Here is your monthly data:")
     print("Month Year: The month and year of energy data.")
     print("Consumed (kW): The energy consumed during "
           "the month, in kilowatts.")
@@ -322,7 +321,7 @@ def display_month_data(data):
         print()  # Add a single newline below the table
 
         while True:
-            print("\nWhat would you like to do next?")
+            print(Fore.BLUE + "\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
             choice = input("Enter your choice (1 or 2): \n")
@@ -333,9 +332,9 @@ def display_month_data(data):
             elif choice == '2':
                 return 'exit'
             else:
-                print("Invalid choice. Please enter either 1 or 2.")
+                print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
     else:
-        print("No monthly data available.")
+        print(Fore.RED + "\nNo monthly data available.\n")
         return 'main_menu'
 
 
@@ -343,7 +342,7 @@ def display_project_data(data):
     """
     Display project data with a brief overview.
     """
-    print("Here is your project data:")
+    print(Fore.BLUE + "Here is your project data:")
     print("Payback (€): The balance of your project data, in euros.")
 
     if data:
@@ -357,7 +356,7 @@ def display_project_data(data):
         print()  # Add a single newline below the table
 
         while True:
-            print("\nWhat would you like to do next?")
+            print(Fore.BLUE + "\nWhat would you like to do next?")
             print("1. Back to main menu")
             print("2. Exit")
             choice = input("Enter your choice (1 or 2): \n")
@@ -368,9 +367,9 @@ def display_project_data(data):
             elif choice == '2':
                 return 'exit'
             else:
-                print("Invalid choice. Please enter either 1 or 2.")
+                print(Fore.RED + "Invalid choice. Please enter either 1 or 2.")
     else:
-        print("No project data available.")
+        print(Fore.RED + "No project data available.")
         return 'main_menu'
 
 
@@ -378,7 +377,7 @@ def print_menu():
     """
     Print the main menu options.
     """
-    print("Main Menu:")
+    print(Fore.LIGHTBLUE_EX + "Main Menu:")
     print("1. Enter daily data")
     print("2. View daily data")
     print("3. View monthly data")
@@ -390,7 +389,7 @@ def main():
     """
     Run all program functions
     """
-    print("Welcome to Solar System Data Automation app!\n")
+    print(Fore.LIGHTYELLOW_EX + "Welcome to Solar System Data Automation app!\n")
     print("The Solar System Data Automation app serves as my dedicated tool for\n"
           "logging and tracking my households daily and monthly energy use,\n"
           "savings and payback on the installed system.\n")
@@ -443,7 +442,7 @@ def main():
             break
 
         else:
-            print("Invalid choice. Please choose 1, 2, 3, 4 or 5.")
+            print(Fore.RED + "Invalid choice. Please choose 1, 2, 3, 4 or 5.")
 
     
 main()
