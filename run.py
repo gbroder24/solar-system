@@ -6,7 +6,6 @@ from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
-import colorama as ca
 from colorama import init, Fore, Style
 init(autoreset=True)
 
@@ -517,5 +516,4 @@ def main():
 
 
 prog_start()
-if __name__ == '__main__':
-    main()
+main()
