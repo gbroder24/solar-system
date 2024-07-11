@@ -1,13 +1,13 @@
 import gspread
+import time
+# os library to clear screen
+import os
 from google.oauth2.service_account import Credentials
 from datetime import datetime
 from collections import defaultdict
 import prettytable
 from colorama import init, Fore, Style
 init(autoreset=True)
-import time
-# os library to clear screen
-import os
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -59,12 +59,12 @@ def prog_start():
                 \______/                                                                              
     ''')
     print("\n")
-    print(Fore.YELLOW + Style.BRIGHT + "Solar Generation and Energy Use Data Logging System "
-          "for Solar Panel Installations.\n")
+    print(Fore.YELLOW + Style.BRIGHT + "Solar Generation and Energy Use "
+          "Data Logging System for Solar Panel Installations.\n")
     time.sleep(1)
-    print(Fore.YELLOW + Style.BRIGHT + "     (Created for Educational Purposes -"
+    print(Fore.YELLOW + Style.BRIGHT + " (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
-    time.sleep(10)
+    time.sleep(5)
     clear_screen()
 
 
@@ -86,18 +86,19 @@ def get_daily_data():
     """
     while True:
         print(Fore.LIGHTBLUE_EX + "Please enter daily energy use data.\n")
-        print("Format: Day Month Year, Consumed (kW), Export (kW), Import (kW).\n")
+        print("Format: Day Month Year, "
+              "Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
 
         data_str = input("Enter your data here: \n")
         print()
 
         daily_data = data_str.split(",")
-        
+
         if validate_daily_data(daily_data):
             print(Fore.GREEN + 'Data is valid.\n')
             break
-    
+
     return daily_data
 
 
@@ -106,17 +107,19 @@ def validate_daily_data(values):
     Validate daily data input.
     """
     if len(values) != 4:
-        print(Fore.RED + f"Exactly 4 values required, you provided {len(values)}.\n")
+        print(Fore.RED + "Exactly 4 values required, "
+              f"you provided {len(values)}.\n")
         return False
 
     # Validate date format (Day Month Year)
     try:
         daily_date = datetime.strptime(values[0].strip(), "%d %b %Y")
     except ValueError:
-        print(Fore.RED + "Invalid date format. Please use Day Month Year format.")
+        print(Fore.RED + "Invalid date format. "
+              "Please use Day Month Year format.")
         print("(e.g., 3 Jun 2024).\n")
         return False
-    
+
     # Validate daily energy data (Consumed (kW), Export (kW), Import (kW))
     try:
         new_list = values[1:]
@@ -129,11 +132,11 @@ def validate_daily_data(values):
     # Create two datetime objects with time
     datetime1 = datetime.strptime(values[0].strip(), "%d %b %Y")
     datetime2 = datetime.today()
-    
+
     # Extract dates from datetime objects
     input_date = datetime1.date()
     todays_date = datetime2.date()
-    
+
     # Compare dates
     if input_date > todays_date:
         print(Fore.RED + f"Invalid date, you provided {values[0]}.\n")
@@ -152,11 +155,12 @@ def validate_daily_data(values):
     count = new_dates_list.count(values[0])
 
     if count == 1:
-        print(Fore.RED + f"Duplicate date entered, you provided {values[0]}.\n")
+        print(Fore.RED + "Duplicate date entered, "
+              f"you provided {values[0]}.\n")
         return False
 
     return True
-    
+
 
 def validate_project_data(data):
     """
@@ -168,10 +172,11 @@ def validate_project_data(data):
         val_list = data[0]
         [float(value) for value in val_list]
     except ValueError:
-        print(Fore.RED + "\nInvalid project data format. Please use correct format.")
+        print(Fore.RED + "\nInvalid project data format. "
+              "Please use correct format.")
         print("(e.g., 1000.00).\n")
         return False
-    
+
     return True
 
 
@@ -223,8 +228,8 @@ def calculate_month():
         grouped_data[month_year]["savings"] = monthly_saving
 
     return grouped_data
-        
-    
+
+
 def update_monthly_worksheet():
     """
     Update the monthly sheet with the calculated month data.
@@ -233,11 +238,11 @@ def update_monthly_worksheet():
 
     # Calculate progress
     month_data = calculate_month()
-    
+
     print("Updating monthly worksheet...\n")
 
     month_list = []
-    
+
     # Update monthly sheet for each month
     for month_year, info in month_data.items():
         month_list.append(month_year)
@@ -251,7 +256,7 @@ def update_monthly_worksheet():
             monthly.update_cell(row_index, 5, info["savings"])
         else:
             print(f"Error: Month {month_year} not found in progress sheet.")
-            
+
     print(Fore.GREEN + "Monthly worksheet updated successfully.\n")
 
     time.sleep(3)
@@ -268,17 +273,17 @@ def calculate_project_payback():
     nums_list = [float(value) for value in new_values]
     month_savings = [num for num in nums_list]
     total_months = sum(month_savings)
-    
+
     while True:
         print(Fore.BLUE + "Please enter project cost.\n")
         print("Format: Project Cost (€).\n")
         print("Example: 5000.00\n")
         project_str = input("Enter your data here: \n")
-        #validate input project str
+        # validate input project str
         if validate_project_data(project_str):
             print(Fore.GREEN + '\nProject data is valid.\n')
             break
- 
+
     print("Calculating project payback...\n")
 
     payback = total_months - float(project_str)
@@ -293,13 +298,13 @@ def update_payback_worksheet(data):
     payback_worksheet = SHEET.worksheet("payback")
 
     payback_list = []
-    
+
     print("Updating payback worksheet...\n")
 
     # Update payback sheet
     payback_list.append(data)
     payback_worksheet.update([[val] for val in payback_list], "A2")
-    
+
     print(Fore.GREEN + "Payback worksheet updated successfully.\n")
 
 
@@ -361,7 +366,6 @@ def display_month_data(data):
     print("Imported (kW): The energy imported from the grid "
           "during the month, in kilowatts.")
     print("Savings (€): The savings calculated during the month, in euros.")
-          
 
     if len(data) > 1:
         print("\n")  # Add a newline above the table
@@ -412,7 +416,7 @@ def display_project_data(data):
         table = prettytable.PrettyTable([
             "Payback (€)"
             ])
-        
+
         table.add_row([data])
         print(table)
         print()  # Add a single newline below the table
@@ -455,8 +459,10 @@ def main():
     """
     Run all program functions
     """
-    print(Fore.LIGHTYELLOW_EX + "Welcome to Solar System Data Automation app!\n")
-    print("The Solar System Data Automation app serves as my dedicated tool for\n"
+    print(Fore.LIGHTYELLOW_EX + "Welcome to Solar System "
+          "Data Automation app!\n")
+    print("The Solar System Data Automation app "
+          "serves as my dedicated tool for\n"
           "logging and tracking my households daily and monthly energy use,\n"
           "savings and payback on the installed system.\n")
 
@@ -509,5 +515,5 @@ def main():
             print(Fore.RED + "Invalid choice. Please choose 1, 2, 3, 4 or 5.")
 
 
-prog_start()    
+prog_start()
 main()
