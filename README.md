@@ -23,3 +23,12 @@
 + I want to easily understand how to input my data.
 + I want to recieve clear feedback when I input correct / incorrect data. 
 + I want to view my data and have it displayed in a clear and easy to understand format.
+
+### Color Palette
+
+The following colors were chosen for the app and ensure contrast is achieved in the main parts of the CLI. Colorama has been imported in to the run.py file to apply color to the terminal text. It makes the algorithm more intuitive and easy to understand.
+
++ Yellow is used for indicating the solar system app program starting screen and welcoming message.
++ Blue is used for indicating headings and user prompts in the terminal.
++ Green is used for indicating success or valid input from the user.
++ Red is used for indicating no data available, errors or invalid input from the user.

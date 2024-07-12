@@ -75,7 +75,7 @@ def get_daily_data():
     Get daily figures input from the user.
     """
     while True:
-        print(Fore.LIGHTBLUE_EX + "Please enter daily energy use data.\n")
+        print(Fore.BLUE + "Please enter daily energy use data.\n")
         print("Format: Day Month Year, "
               "Consumed (kW), Export (kW), Import (kW).\n")
         print("Example: 3 Jun 2024, 5.154, 20.698, 6.354\n")
@@ -430,7 +430,7 @@ def print_menu():
     """
     Print the main menu options.
     """
-    print(Fore.LIGHTBLUE_EX + "Main Menu:")
+    print(Fore.BLUE + "Main Menu:")
     print("1. Enter daily data")
     print("2. View daily data")
     print("3. View monthly data")
@@ -442,7 +442,7 @@ def main():
     """
     Run all program functions
     """
-    print(Fore.LIGHTYELLOW_EX + "Welcome to Solar System "
+    print(Fore.YELLOW + Style.BRIGHT + "Welcome to Solar System "
           "Data Automation app!\n")
     print("The Solar System Data Automation app "
           "serves as my dedicated tool for\n"
