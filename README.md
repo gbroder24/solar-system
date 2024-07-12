@@ -128,3 +128,13 @@ The user is presented with an ordered list, is prompted to choose from a list of
 The user gets a confirmation message that is displayed in the terminal when exiting the program.
 
 ![Solar System Exit](/documentation/images/exit.PNG)
+
+## Future Features
+
+### Edit or Delete Daily Entries 
+
+Allow the user to edit or delete daily entries. Provides the user with more functionality after entering their data incase the wrong data was entered.
+
+### Input Energy Rate
+
+Allow the user to input their current energy rate when the rate changes. Rates are currently volatile and providing this functionality offers more accuracy in calculating savings and project cost.
