@@ -72,3 +72,59 @@ Data functions are programmed for calculating data, formatting data for display 
 The following process flowchart was designed using Lucidchart in order to plan the process logic to be implemented in the algorithm.
 
 ![Solar System Flowchart](/documentation/images/flowchart.png)
+
+## List of Features
+
+### Welcoming Message
+
+The user is greeted with a welcoming message to the Solar System app and a brief high level overview description.
+
+![Solar System Welcome Message](/documentation/images/welcome-msg.PNG)
+
+### Main Menu
+
+The user is presented with an ordered list, is prompted to choose from a list of five options and to input their choice.
+
+![Solar System Main Menu](/documentation/images/main-menu.PNG)
+
+### Enter Daily Energy Data
+
+The user can enter daily energy data including the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts).
+
+![Solar System Enter Daily Data](/documentation/images/input-daily-energy-data.PNG)
+
+### View Daily Energy Data
+
+The user can view their daily energy data directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table headings included are the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts).
+
+![Solar System View Daily Data](/documentation/images/view-daily-data.PNG)
+
+### View Monthly Energy Data and Savings
+
+The user can view their monthly energy data and savings directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table headings included are the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts) and savings (in euros).
+
+![Solar System View Monthly Data](/documentation/images/monthly-data.PNG)
+
+### Enter Project Cost
+
+The user is prompted to input the cost of their installed solar panel system.
+
+![Solar System Enter Project Cost](/documentation/images/project-cost.PNG)
+
+### View Updated Project Cost
+
+The user can view their updated project cost data directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table heading included is the payback (in euros).
+
+![Solar System View Project Cost](/documentation/images/project-payback.PNG)
+
+### Navigate Application
+
+The user is presented with an ordered list, is prompted to choose from a list of two options and to input their choice. The user can navigate to the main menu or exit the program after viewing data tables.
+
+![Solar System Navigation](/documentation/images/navigation-options.PNG)
+
+### Exit Application
+
+The user gets a confirmation message that is displayed in the terminal when exiting the program.
+
+![Solar System Exit](/documentation/images/exit.PNG)
