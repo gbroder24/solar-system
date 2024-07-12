@@ -1,32 +1,9 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Solar System App
+![Solar System image](/documentation/images/ascii-art.PNG)
+## The Solar System app is a personalized application for my domestic solar panel installation. Designed to log my housholds daily, monthly, yearly energy usage and view electrical utility bill savings based on my current rate. Programmed in the app is the display functionality where I can view what my daily, monthly energy use is, how much money I am saving per month. There is also a display to monitor how much you are paying back on the installed system.
 
-Welcome,
+### PP3 - Gary Broderick
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
-
-## Reminders
-
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+------------------------------------------------------------------------------------
+## [**Live Site**](assets/readme-files/welcome.png)
+## [**Repository**](https://github.com/gbroder24/solar-system.git)
