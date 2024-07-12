@@ -5,7 +5,7 @@
 ### PP3 - Gary Broderick
 
 ------------------------------------------------------------------------------------
-## [**Live Site**](assets/readme-files/welcome.png)
+## [**Live Site**](https://solar-system-f54a8eac54d6.herokuapp.com/)
 ## [**Repository**](https://github.com/gbroder24/solar-system.git)
 
 ## User Stories
