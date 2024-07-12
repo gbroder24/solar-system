@@ -1,12 +1,12 @@
 # Solar System App
-![Solar System image](/documentation/images/ascii-art.PNG)
+![ Solar System image ](/documentation/images/ascii-art.PNG)
 ## The Solar System app is a personalized application for my domestic solar panel installation. Designed to log my housholds daily, monthly, yearly energy usage and view electrical utility bill savings based on my current rate. Programmed in the app is the display functionality where I can view what my daily, monthly energy use is, how much money I am saving per month. There is also a display to monitor how much you are paying back on the installed system.
 
 ### PP3 - Gary Broderick
 
 ------------------------------------------------------------------------------------
-## [**Live Site**](https://solar-system-f54a8eac54d6.herokuapp.com/)
-## [**Repository**](https://github.com/gbroder24/solar-system.git)
+## [ **Live Site** ](https://solar-system-f54a8eac54d6.herokuapp.com/)
+## [ **Repository** ](https://github.com/gbroder24/solar-system.git)
 
 ## User Stories
 
@@ -71,7 +71,7 @@ Data functions are programmed for calculating data, formatting data for display 
 
 The following process flowchart was designed using Lucidchart in order to plan the process logic to be implemented in the algorithm.
 
-![Solar System Flowchart](/documentation/images/flowchart.png)
+![ Solar System Flowchart ](/documentation/images/flowchart.png)
 
 ## List of Features
 
@@ -79,55 +79,55 @@ The following process flowchart was designed using Lucidchart in order to plan t
 
 The user is greeted with a welcoming message to the Solar System app and a brief high level overview description.
 
-![Solar System Welcome Message](/documentation/images/welcome-msg.PNG)
+![ Solar System Welcome Message ](/documentation/images/welcome-msg.PNG)
 
 ### Main Menu
 
 The user is presented with an ordered list, is prompted to choose from a list of five options and to input their choice.
 
-![Solar System Main Menu](/documentation/images/main-menu.PNG)
+![ Solar System Main Menu ](/documentation/images/main-menu.PNG)
 
 ### Enter Daily Energy Data
 
 The user can enter daily energy data including the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts).
 
-![Solar System Enter Daily Data](/documentation/images/input-daily-energy-data.PNG)
+![ Solar System Enter Daily Data ](/documentation/images/input-daily-energy-data.PNG)
 
 ### View Daily Energy Data
 
 The user can view their daily energy data directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table headings included are the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts).
 
-![Solar System View Daily Data](/documentation/images/view-daily-data.PNG)
+![ Solar System View Daily Data ](/documentation/images/view-daily-data.PNG)
 
 ### View Monthly Energy Data and Savings
 
 The user can view their monthly energy data and savings directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table headings included are the date, consumed (in kilowatts), Export (in kilowatts), Import (in kilowatts) and savings (in euros).
 
-![Solar System View Monthly Data](/documentation/images/monthly-data.PNG)
+![ Solar System View Monthly Data ](/documentation/images/monthly-data.PNG)
 
 ### Enter Project Cost
 
 The user is prompted to input the cost of their installed solar panel system.
 
-![Solar System Enter Project Cost](/documentation/images/project-cost.PNG)
+![ Solar System Enter Project Cost ](/documentation/images/project-cost.PNG)
 
 ### View Updated Project Cost
 
 The user can view their updated project cost data directly from the terminal. Data is displayed in a table format, programmed using the import prettytable. Table heading included is the payback (in euros).
 
-![Solar System View Project Cost](/documentation/images/project-payback.PNG)
+![ Solar System View Project Cost ](/documentation/images/project-payback.PNG)
 
 ### Navigate Application
 
 The user is presented with an ordered list, is prompted to choose from a list of two options and to input their choice. The user can navigate to the main menu or exit the program after viewing data tables.
 
-![Solar System Navigation](/documentation/images/navigation-options.PNG)
+![ Solar System Navigation ](/documentation/images/navigation-options.PNG)
 
 ### Exit Application
 
 The user gets a confirmation message that is displayed in the terminal when exiting the program.
 
-![Solar System Exit](/documentation/images/exit.PNG)
+![ Solar System Exit ](/documentation/images/exit.PNG)
 
 ## Future Features
 
@@ -138,3 +138,23 @@ Allow the user to edit or delete daily entries. Provides the user with more func
 ### Input Energy Rate
 
 Allow the user to input their current energy rate when the rate changes. Rates are currently volatile and providing this functionality offers more accuracy in calculating savings and project cost.
+
+## Tools and Technologies
+
++ Python3.  
++ MarkDown Readme.md file.  
++ [ Github ](https://github.com/about) Repository.  
++ [ Gitpod ](https://www.gitpod.io/about) IDE.  
++ [ Git ](https://git-scm.com/about) Version control.  
++ [ W3schools ](https://www.w3schools.com/) Python tips.  
++ [ CI Python Linter ](https://pep8ci.herokuapp.com/#) to validate code to PEP8 standard.  
++ [ Heroku ](https://id.heroku.com/) to deploy the application.  
++ [ PrettyTable ](https://pypi.org/project/prettytable/) library was used to display the data in table format.  
++ [ Colorama ](https://pypi.org/project/colorama/) library was used to apply color to the terminal text.  
++ [ Gspread ](https://pypi.org/project/gspread/) library was used to interface for working with Google Sheets.  
++ [ Time ](https://pypi.org/project/time/) library was used for the conversion of given time input into proper format.  
++ [ Date Time ](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior) library was used for the conversion of given date and time input into proper format.  
++ [ Os ](https://docs.python.org/3/library/os.html) library was used to interact with the operating system to clear the terminal screen.  
++ [ Credentials ](https://pypi.org/project/credentials/) library was used to install credentials.  
++ [ Default Dictionary ](https://docs.python.org/3/library/collections.html) library was used to create dictionary. 
++ [Lucidchart](https://www.lucidchart.com/pages/) was used to create the process flowchart.  
