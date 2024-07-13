@@ -232,3 +232,23 @@ The following test scenarios were executed on the application and results record
 All python code was validated using the Code Institute Python Linter. No errors found.
 
 ![ Code Institute Python Linter ](documentation/validation/html/html-validation.PNG)
+
+## Deployment
+
+The application has been deployed on Heroku by using the following steps:
+
+1. Create the list of requirements. Run `pip3 freeze > requirements.txt` in the terminal.
+2. Add, commit and push the changes to GitHub.
+3. Go to the Heroku's website and sign-up for a free student account.
+4. From the Heroku dashboard, click on "Create new app" button.
+5. Enter the "App name" and "Choose a region" before clicking on "Create app".
+6. Go to "Config Vars" under the "Settings" tab.
+7. Click on "Reveals Config Vars" and add the KEY: CREDS and the values stored in creds.json file if needed.
+8. Add the Config Var, KEY: PORT and VALUE: 8000.
+9. Go to "Buildpacks" section and click "Add buildpack".
+10. Select "python" and click "Save changes"
+11. Add "nodejs" buildpack as well using the same process.
+12. Go to "Deployment method", under the "Deploy" tab select "GitHub" and click on "Connect to GitHub".
+13. Go to "Connect to GitHub" section and "Search" the repository to be deployed.
+14. Click "Connect" next the repository name.
+15. Choose "Automatic deploys" or "Manual deploys" to deploy your application.
