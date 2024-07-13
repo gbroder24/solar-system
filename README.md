@@ -158,3 +158,77 @@ Allow the user to input their current energy rate when the rate changes. Rates a
 + [ Credentials ](https://pypi.org/project/credentials/) library was used to install credentials.  
 + [ Default Dictionary ](https://docs.python.org/3/library/collections.html) library was used to create dictionary. 
 + [Lucidchart](https://www.lucidchart.com/pages/) was used to create the process flowchart.  
+
+## Testing
+Test scenarios for the Solar System application were created by the Full Stack Software Developer (Gary Broderick). The application was manually tested, validated and results recorded. User testing (by family and friends) was also executed.
+
+### Application
+The following test scenarios were executed on the application and results recorded:
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Scenario</th>
+        <th>Expected Result</th>
+        <th>Result</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Main Menu</td>
+        <td>Validates that input for the main menu choice is one of the valid options: 1, 2, 3, 4 or 5.</td>
+        <td><img src=documentation/images/main-menu-error.PNG alt="main menu invalid input"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validates that input for the submenu choice is one of the valid options: 1 or 2</td>
+        <td><img src=documentation/images/sub-menu-error.PNG alt="sub menu invalid input"></td>
+        <td>Pass</td>
+    </tr>   
+    <tr>
+        <td rowspan=2>Daily Data Entry Values</td>
+        <td>Validates that exactly 4 values have been entered correctly: Day Month Year, Consumed (kW), Export (kW), Import (kW).</td>
+        <td><img src=documentation/images/valid-daily-input.PNG alt="valid daily entry"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validates that exactly 4 values have been not been entered correclty.</td>
+        <td><img src=documentation/images/four-daily-values-error.PNG alt="invalid daily entry"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=3>Daily Date Format</td>
+        <td>Validates the daily date format (Day Month Year).</td>
+        <td><img src=documentation/images/invalid-date-error.PNG alt="daily date format"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate the duplicate daily date format (Day Month Year)</td>
+        <td><img src=documentation/images/duplicate-date-error.PNG alt="duplicate daily date format"></td>
+        <td>Pass</td>
+    </tr>   
+        <td>Validate todays daily date format (Day Month Year)</td>
+        <td><img src=documentation/images/invalid-date-today.PNG alt="todays daily date format"></td>
+        <td>Pass</td>
+    </tr>   
+    <tr>
+        <td>Validate Daily Energy Integer Validation</td>
+        <td>Validates that the value entered is an interger number.</td>
+        <td><img src=documentation/images/invalid-data-type-error.PNG alt="interger validation"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=3>Project Data Entry Values</td>
+        <td>Validates value has been entered correctly: Payback (€).</td>
+        <td><img src=documentation/images/valid-project-data.PNG alt="valid project entry"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validates that the value entered is an interger number.</td>
+        <td><img src=documentation/images/invalid-project-data.PNG alt="interger validation"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validates that exactly 1 value has not been entered correclty.</td>
+        <td><img src=assets/readme-files/values-invalid.png alt="invalid projest entry"></td>
+        <td>Pass</td>
+    </tr>
+</table>
+
+## Python3 PEP8 Validation
+All python code was validated using the Code Institute Python Linter. No errors found.
+
+![ Code Institute Python Linter ](documentation/validation/html/html-validation.PNG)
