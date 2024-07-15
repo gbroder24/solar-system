@@ -283,7 +283,7 @@ def calculate_project_payback():
     print("Calculating project payback...\n")
 
     payback = total_months - float(project_str)
-
+    
     return payback
 
 
@@ -300,7 +300,7 @@ def update_payback_worksheet(data):
     # Update payback sheet
     payback_list.append(data)
     payback_worksheet.update([[val] for val in payback_list], "A2")
-
+    
     print(Fore.GREEN + "Payback worksheet updated successfully.\n")
 
 

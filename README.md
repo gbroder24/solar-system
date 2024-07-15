@@ -223,7 +223,21 @@ The following test scenarios were executed on the application and results record
         <td>Pass</td>
     </tr>
     <td>Validates that exactly 1 value has not been entered correclty.</td>
-        <td><img src=assets/readme-files/values-invalid.png alt="invalid projest entry"></td>
+        <td><img src=documentation/images/one-project-value-error.PNG alt="invalid projest entry"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=3>Project Data Display Values</td>
+        <td>Validates positive balance value has been displayed correctly: Payback (€).</td>
+        <td><img src=documentation/images/project-display-positive.PNG alt="positive balance project display"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validates negative balance value has been displayed correctly: Payback (€).</td>
+        <td><img src=documentation/images/project-display-negative.PNG alt="negative balance project display"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validates even balance value has been displayed correctly: Payback (€).</td>
+        <td><img src=documentation/images/project-display-even.PNG alt="even balance project display"></td>
         <td>Pass</td>
     </tr>
 </table>
