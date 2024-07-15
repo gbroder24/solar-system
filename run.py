@@ -54,7 +54,7 @@ def prog_start():
     time.sleep(1)
     print(Fore.YELLOW + Style.BRIGHT + "      (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
-    time.sleep(5)
+    #time.sleep(5)
     clear_screen()
 
 
@@ -83,6 +83,9 @@ def get_daily_data():
         data_str = input("Enter your data here: \n")
         print()
 
+        data_str = data_str.lstrip("0")
+        data_str = data_str.title()
+        print(data_str)
         daily_data = data_str.split(",")
 
         if validate_daily_data(daily_data):
@@ -142,11 +145,12 @@ def validate_daily_data(values):
     daily = SHEET.worksheet("daily")
     dates = daily.col_values(1)
     new_dates_list = dates[1:]
-    count = new_dates_list.count(values[0])
+    new_format = values[0].lstrip("0")
+    count = new_dates_list.count(new_format)
 
     if count == 1:
         print(Fore.RED + "Duplicate date entered, "
-              f"you provided {values[0]}.\n")
+            f"you provided {values[0]}.\n")
         return False
 
     return True
