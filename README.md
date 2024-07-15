@@ -255,10 +255,10 @@ The application has been deployed on Heroku by using the following steps:
 
 ## Credits
 
-![ Stack Overflow ](https://stackoverflow.com/questions/75731307/inserting-a-python-list-in-a-column-in-google-sheet-using-gspread-and-sheet-api) for gspread cell tips.
-![ Influx Data ](https://www.influxdata.com/blog/python-date-comparison-comprehensive-tutorial/#:~:text=Compare%20two%20dates%20without%20time,-You%20can%20use&text=date()%20date2%20%3D%20datetime2.,Date2%20are%20the%20same.%22) for understanding date comparisons.
-![ Python Docs ](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior) to gain an understanding of the strptime method.
-![ Stack Overflow ](https://stackoverflow.com/questions/70263910/colorama-wont-stop-printing-colored-text) for colorma tips.
++ [ Stack Overflow ](https://stackoverflow.com/questions/75731307/inserting-a-python-list-in-a-column-in-google-sheet-using-gspread-and-sheet-api) for gspread cell tips.  
++ [ Influx Data ](https://www.influxdata.com/blog/python-date-comparison-comprehensive-tutorial/#:~:text=Compare%20two%20dates%20without%20time,-You%20can%20use&text=date()%20date2%20%3D%20datetime2.,Date2%20are%20the%20same.%22) for understanding date comparisons.  
++ [ Python Docs ](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior) to gain an understanding of the strptime method.  
++ [ Stack Overflow ](https://stackoverflow.com/questions/70263910/colorama-wont-stop-printing-colored-text) for colorma tips.  
 
 ### Acknowledgements
 
