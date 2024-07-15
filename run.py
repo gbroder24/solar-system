@@ -156,12 +156,17 @@ def validate_project_data(data):
     """
     Validate project data input.
     """
+    if len(data) != 1:
+        print(Fore.RED + "Exactly 1 value required, "
+              f"you provided {len(data)}.\n")
+        return False
 
     # Validate project data format (€)
     try:
         val_list = data[0]
-        [float(value) for value in val_list]
-    except ValueError:
+        number = float(val_list)
+    except ValueError as e:
+        print(Fore.RED + f"Invalid data: {e}.\n")
         print(Fore.RED + "\nInvalid project data format. "
               "Please use correct format.")
         print("(e.g., 1000.00).\n")
@@ -268,8 +273,10 @@ def calculate_project_payback():
         print("Format: Project Cost (€).\n")
         print("Example: 5000.00\n")
         project_str = input("Enter your data here: \n")
+        data_project = project_str.split(",")
+
         # validate input project str
-        if validate_project_data(project_str):
+        if validate_project_data(data_project):
             print(Fore.GREEN + '\nProject data is valid.\n')
             break
 
