@@ -54,7 +54,7 @@ def prog_start():
     time.sleep(1)
     print(Fore.YELLOW + Style.BRIGHT + "      (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
-    #time.sleep(5)
+    time.sleep(5)
     clear_screen()
 
 
