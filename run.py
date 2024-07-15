@@ -396,13 +396,33 @@ def display_project_data(data):
     print(Fore.BLUE + "Here is your project data:")
     print("Payback (€): The balance of your project data, in euros.")
 
-    if data:
+    if data < 0:
         print("\n")  # Add a newline above the table
         table = prettytable.PrettyTable([
             "Payback (€)"
             ])
+        str_data = Fore.RED + str(data) + Fore.RESET
+        table.add_row([str_data])
+        print(table)
+        print()  # Add a single newline below the table
 
-        table.add_row([data])
+    elif data > 0:
+        print("\n")  # Add a newline above the table
+        table = prettytable.PrettyTable([
+            "Payback (€)"
+            ])
+        str_data = Fore.GREEN + str(data) + Fore.RESET
+        table.add_row([str_data])
+        print(table)
+        print()  # Add a single newline below the table
+
+    elif data == 0:
+        print("\n")  # Add a newline above the table
+        table = prettytable.PrettyTable([
+            "Payback (€)"
+            ])
+        str_data = str(data)
+        table.add_row([str_data])
         print(table)
         print()  # Add a single newline below the table
 
