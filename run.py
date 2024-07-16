@@ -56,16 +56,16 @@ def prog_start():
     # Fore and Style options are colorama properties to give the text colours
     print(Fore.YELLOW + Style.BRIGHT + r''''
                         ____  ____  _     ____  ____
-                        / ___\:/  _ \:/ \:   /  _ \:/  __\:
-                        |    \:| / \:|| |   | / \:||  \:/|
-                        \:___ || \:_/|| |_/\:| |-|||    /
-                        \:____/\:____/\:____/\:_/ \:|\:_/\:_\:
+                        / ___\/  _ \/ \   /  _ \/  __\
+                        |    \| / \|| |   | / \||  \/|
+                        \___ || \_/|| |_/\| |-|||    /
+                        \____/\____/\____/\_/ \|\_/\_\
 
                     ____ ___  _ ____  _____  _____ _
-                    / ___\:\:  \:/// ___\:/__ __\:/  __// \:__/|
-                    |    \: \:  / |    \:  / \:  |  \:  | |\:/||
-                    \:___ | / /  \:___ |  | |  |  /_ | |  ||
-                    \:____//_/   \:____/  \:_/  \:____\:\:_/  \:|
+                    / ___\\  \/// ___\/__ __\/  __// \__/|
+                    |    \ \  / |    \  / \  |  \  | |\/||
+                    \___ | / /  \___ |  | |  |  /_ | |  ||
+                    \____//_/   \____/  \_/  \____\\_/  \|
 
     ''')
     print(Fore.YELLOW + Style.BRIGHT + "            Solar Generation and Energy Use "
@@ -216,7 +216,7 @@ def calculate_month():
         if len(date_str.split()) == 1:
             date_str = f"1 {date_str}"  # Assuming first day of the month
         daily_date = datetime.strptime(date_str, "%d %b %Y")
-        month_year = daily_date.strftime("%B %Y")
+        month_year = daily_date.strftime("%b %Y")
         consumed = float(row[1])
         exported = float(row[2])
         imported = float(row[3])
