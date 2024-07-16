@@ -141,8 +141,8 @@ Allow the user to input their current energy rate when the rate changes. Rates a
 
 ## Tools and Technologies
 
-+ Python3.  
-+ MarkDown Readme.md file.  
++ [ Python3 ](https://www.python.org/download/releases/3.0/).  
++ [ MarkDown ](https://github.com/luong-komorebi/Markdown-Tutorial/blob/master/README.md) Readme.md file.  
 + [ Github ](https://github.com/about) Repository.  
 + [ Gitpod ](https://www.gitpod.io/about) IDE.  
 + [ Git ](https://git-scm.com/about) Version control.  
