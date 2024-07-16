@@ -68,13 +68,13 @@ def prog_start():
                     \____//_/   \____/  \_/  \____\\_/  \|
 
     ''')
-    print(Fore.YELLOW + Style.BRIGHT + "            Solar Generation and Energy Use "
+    print(Fore.YELLOW + Style.BRIGHT + "      Solar Generation and Energy Use "
           "Data Logging System.\n")
     time.sleep(1)
-    print(Fore.YELLOW + Style.BRIGHT + "      (Created for Educational Purposes -"
+    print(Fore.YELLOW + Style.BRIGHT + "   (Created for Educational Purposes -"
           " Copyright: Gary Broderick '24)")
-    time.sleep(5)
-    clear_screen()
+    #time.sleep(5)
+    #clear_screen()
 
 
 def get_daily_data():
@@ -156,7 +156,7 @@ def validate_daily_data(values):
 
     if count == 1:
         print(Fore.RED + "Duplicate date entered, "
-            f"you provided {values[0]}.\n")
+              f"you provided {values[0]}.\n")
         return False
 
     return True
@@ -294,7 +294,7 @@ def calculate_project_payback():
     print("Calculating project payback...\n")
 
     payback = total_months - float(project_str)
-    
+
     return payback
 
 
@@ -312,7 +312,7 @@ def update_payback_worksheet(data):
     payback_list.append(data)
     # credit: https://stackoverflow.com/questions/75731307/
     payback_worksheet.update([[val] for val in payback_list], "A2")
-    
+
     print(Fore.GREEN + "Payback worksheet updated successfully.\n")
 
 

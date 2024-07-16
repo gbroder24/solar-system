@@ -267,7 +267,7 @@ The following test scenarios were executed on the application and results record
 ## Python3 PEP8 Validation
 All python code was validated using the Code Institute Python Linter. No errors found.
 
-![ Code Institute Python Linter ](documentation/validation/html/html-validation.PNG)
+![ Code Institute Python Linter ](documentation/images/linter.PNG)
 
 ## Deployment
 
