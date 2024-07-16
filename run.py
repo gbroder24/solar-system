@@ -77,18 +77,6 @@ def prog_start():
     clear_screen()
 
 
-def view_daily_data():
-    """
-    View daily data from the terminal.
-    """
-    print("Viewing daily data...\n")
-    daily_worksheet = SHEET.worksheet("daily")
-    data = daily_worksheet.get_all_values()
-    for row in data:
-        print(", ".join(row))  # Print each row of daily data
-    print("\n")
-
-
 def get_daily_data():
     """
     Get daily figures input from the user.

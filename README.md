@@ -19,7 +19,7 @@
 
 ### User Goals
 
-+ I want to log my daily energy usage and solar generation in a user friendly process.  
++ I want to understand the main objective of the program clearly to know its purpose.  
 + I want to easily understand how to input my data.
 + I want to recieve clear feedback when I input correct / incorrect data. 
 + I want to view my data and have it displayed in a clear and easy to understand format.
@@ -30,8 +30,8 @@ The following colors were chosen for the app and ensure contrast is achieved in 
 
 + Yellow is used for indicating the solar system app program starting screen and welcoming message.
 + Blue is used for indicating headings and user prompts in the terminal.
-+ Green is used for indicating success or valid input from the user.
-+ Red is used for indicating no data available, errors or invalid input from the user.
++ Green is used for indicating success or valid input from the user and displaying a positive balance.
++ Red is used for indicating no data available, errors or invalid input from the user and displaying a negative balance.
 
 ## Data Model
 
@@ -162,6 +162,28 @@ Allow the user to input their current energy rate when the rate changes. Rates a
 ## Testing
 Test scenarios for the Solar System application were created by the Full Stack Software Developer (Gary Broderick). The application was manually tested, validated and results recorded. User testing (by family and friends) was also executed.
 
+### Testing User Stories
+
++ As a user, I want to understand the main objective of the program clearly to know its purpose.
+
+   - Details about the the Solar Stystem application are displayed in the welcome message with a brief overview of the application.
+
++ As a user, I want to easily understand how to input my data.
+
+   - Input prompts are displayed in blue text, clearly indicating the required input from the user.
+   
+   - Detailed information is provided alongside the input prompts, explaining the format and type of data expected from the user.
+
++ As a user, I want to recieve clear feedback when I input correct / incorrect data.
+
+   - Error messages are prominently displayed in red, clearly indicating when incorrect input format is provided.
+
+   - Error messages explain the issue with the input provided, helping the user understand what went wrong and how to correct it.
+
++ As a user, I want to view my data and have it displayed in a clear and easy to understand format.
+
+   - Daily, monthly and project data are displayed in a clear and visually appealing manner, utilizing a table format to enhance clarity.
+
 ### Application
 The following test scenarios were executed on the application and results recorded:
 
@@ -276,7 +298,7 @@ The application has been deployed on Heroku by using the following steps:
 + [ Snyk.io ](https://snyk.io/advisor/python/colorama/functions/colorama.Fore.RESET) for tips on how to reset colorama.  
 + [ 101computing ](https://www.101computing.net/python-typing-text-effect/) for time delays and clearing screen.
 
-+ [ Markdown Monster ](https://markdownmonster.west-wind.com/docs/_53a0pfz0t.htm#:~:text=%3E-,Markdown%20Support%20for%20Tables,is%20rendering%20the%20Markdown%20text.)
++ [ Markdown Monster ](https://markdownmonster.west-wind.com/docs/_53a0pfz0t.htm#:~:text=%3E-,Markdown%20Support%20for%20Tables,is%20rendering%20the%20Markdown%20text.) for creating tables in readme.md in html code.
 
 ### Readme
 The Solar System readme mark down was inspired by the following:
