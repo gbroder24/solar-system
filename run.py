@@ -1,12 +1,27 @@
+# Settings and credentials to allow access, read and modify data in
+# Google Sheets
 import gspread
+from google.oauth2.service_account import Credentials
+
+# time library to add delay
 import time
+
 # os library to clear screen
 import os
-from google.oauth2.service_account import Credentials
+
+# datetime library to add date and time
 from datetime import datetime
+
+# defaultdict library from collections
 from collections import defaultdict
+
+# prettytable library to display tabular data
 import prettytable
+
+# colorama for text color formatting
 from colorama import init, Fore, Style
+
+# initialize colorama
 init(autoreset=True)
 
 SCOPE = [
@@ -15,13 +30,17 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+# const for untracked creds file
 CREDS = Credentials.from_service_account_file('creds.json')
+
+# const for credentials scope
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+# const to allow auth of gspread client within these scoped credentials
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+# const for google sgeet
 SHEET = GSPREAD_CLIENT.open('solar_system')
 
 
-# clear screen function
 # Credit: https://www.101computing.net/python-typing-text-effect/
 def clear_screen():
     """
@@ -85,7 +104,6 @@ def get_daily_data():
 
         data_str = data_str.lstrip("0")
         data_str = data_str.title()
-        print(data_str)
         daily_data = data_str.split(",")
 
         if validate_daily_data(daily_data):
@@ -245,6 +263,7 @@ def update_monthly_worksheet():
     # Update monthly sheet for each month
     for month_year, info in month_data.items():
         month_list.append(month_year)
+        # credit: https://stackoverflow.com/questions/75731307/
         monthly.update([[a] for a in month_list], "A2")
         month_cells = monthly.findall(month_year)
         if month_cells:
@@ -303,6 +322,7 @@ def update_payback_worksheet(data):
 
     # Update payback sheet
     payback_list.append(data)
+    # credit: https://stackoverflow.com/questions/75731307/
     payback_worksheet.update([[val] for val in payback_list], "A2")
     
     print(Fore.GREEN + "Payback worksheet updated successfully.\n")

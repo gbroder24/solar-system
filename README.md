@@ -273,7 +273,19 @@ The application has been deployed on Heroku by using the following steps:
 + [ Influx Data ](https://www.influxdata.com/blog/python-date-comparison-comprehensive-tutorial/#:~:text=Compare%20two%20dates%20without%20time,-You%20can%20use&text=date()%20date2%20%3D%20datetime2.,Date2%20are%20the%20same.%22) for understanding date comparisons.  
 + [ Python Docs ](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior) to gain an understanding of the strptime method.  
 + [ Stack Overflow ](https://stackoverflow.com/questions/70263910/colorama-wont-stop-printing-colored-text) for colorma tips.  
-+ [ Snyk.io ](https://snyk.io/advisor/python/colorama/functions/colorama.Fore.RESET) for tips on how to reset colorama.
++ [ Snyk.io ](https://snyk.io/advisor/python/colorama/functions/colorama.Fore.RESET) for tips on how to reset colorama.  
++ [ 101computing ](https://www.101computing.net/python-typing-text-effect/) for time delays and clearing screen.
+
++ [ Markdown Monster ](https://markdownmonster.west-wind.com/docs/_53a0pfz0t.htm#:~:text=%3E-,Markdown%20Support%20for%20Tables,is%20rendering%20the%20Markdown%20text.)
+
+### Readme
+The Solar System readme mark down was inspired by the following:
+
+[ Bake Stock ](https://github.com/amylour/BakeStock/blob/main/run.py)
+
+[ Fitness Tracker ](https://github.com/Alvor1991/PP3-Python/blob/main/README.md)
+
+[ Irish Animal Habitat ](https://github.com/gbroder24/irish-animal-habitat/blob/main/README.md)
 
 ### Acknowledgements
 
