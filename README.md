@@ -195,7 +195,7 @@ The following test scenarios were executed on the application and results record
         <th>Result</th>
     </tr>
     <tr>
-        <td rowspan=2>Main Menu</td>
+        <td rowspan=2>Menus</td>
         <td>Validates that input for the main menu choice is one of the valid options: 1, 2, 3, 4 or 5.</td>
         <td><img src=documentation/images/main-menu-error.PNG alt="main menu invalid input"></td>
         <td>Pass</td>
