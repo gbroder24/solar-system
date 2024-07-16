@@ -241,7 +241,7 @@ def update_monthly_worksheet():
     """
     monthly = SHEET.worksheet("monthly")
 
-    # Calculate progress
+    # Calculate month
     month_data = calculate_month()
 
     print("Updating monthly worksheet...\n")
@@ -261,7 +261,7 @@ def update_monthly_worksheet():
             monthly.update_cell(row_index, 4, info["imported"])
             monthly.update_cell(row_index, 5, info["savings"])
         else:
-            print(f"Error: Month {month_year} not found in progress sheet.")
+            print(f"Error: Month {month_year} not found in month sheet.")
 
     print(Fore.GREEN + "Monthly worksheet updated successfully.\n")
 

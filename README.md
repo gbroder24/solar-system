@@ -300,6 +300,10 @@ The application has been deployed on Heroku by using the following steps:
 
 + [ Markdown Monster ](https://markdownmonster.west-wind.com/docs/_53a0pfz0t.htm#:~:text=%3E-,Markdown%20Support%20for%20Tables,is%20rendering%20the%20Markdown%20text.) for creating tables in readme.md in html code.
 
++ [ Code Institute Template ](https://github.com/Code-Institute-Org/p3-template) for Python language.
+
++ [ Code Institute ](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/tree/master/02-accessing-user-data/01-requesting-data-from-the-user) for the Love Sandwiches walkthrough project.
+
 ### Readme
 The Solar System readme mark down was inspired by the following:
 
